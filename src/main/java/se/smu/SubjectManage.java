@@ -13,16 +13,39 @@ import javax.swing.JTable;
 import java.awt.ScrollPane;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+
 import javax.swing.ListSelectionModel;
 
 public class SubjectManage extends JFrame {
 	private Intro introclass;
 	private JPanel contentPane;
+	
 	private SubjectManage thisSubjectManage = this;
+
+	private DataBase DB;
+
 	private JTable table;
-
-
-
+	private DefaultTableModel SubTable;
+	public JScrollPane scrollPane;
+	
+	public void SubjectTable(){
+		String[] SubjectColumnNames={"Subject", "Prof", "Year/Semester", "Day", "Start", "End"};
+		SubTable = new DefaultTableModel(DB.MatrixSubject(), SubjectColumnNames);
+		table = new JTable(SubTable);
+		
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.getColumnModel().getColumn(0).setPreferredWidth(150);
+		table.getColumnModel().getColumn(1).setPreferredWidth(96);
+		table.getColumnModel().getColumn(2).setPreferredWidth(157);
+		table.getColumnModel().getColumn(3).setPreferredWidth(157);
+		table.getColumnModel().getColumn(4).setPreferredWidth(50);
+		table.getColumnModel().getColumn(5).setPreferredWidth(50);
+		table.setFillsViewportHeight(true);
+		scrollPane.setViewportView(table);
+		table.setAutoCreateRowSorter(true);	
+		
+	}
+	
 	public SubjectManage(Intro introclass_parm) {
 		setTitle("SubjectManage");
 		introclass = introclass_parm;
