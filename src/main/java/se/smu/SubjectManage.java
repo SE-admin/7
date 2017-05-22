@@ -47,6 +47,8 @@ public class SubjectManage extends JFrame {
 	}
 	
 	public SubjectManage(Intro introclass_parm) {
+		DB = DataBase.getDataBase();
+		
 		setTitle("SubjectManage");
 		introclass = introclass_parm;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
