@@ -15,6 +15,7 @@ public class Intro extends JFrame {
 	
 	private JPanel contentPane;
 	private Intro thisIntro = this;
+	private SubjectManage subjectmanage1;
 
 	public Intro() {
 		setTitle("Intro");
@@ -29,7 +30,7 @@ public class Intro extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisIntro.setVisible(false);
-				SubjectManage subjectmanage1 = new SubjectManage(thisIntro);
+				subjectmanage1 = new SubjectManage(thisIntro);
 				subjectmanage1.setVisible(true);
 			}
 		});
