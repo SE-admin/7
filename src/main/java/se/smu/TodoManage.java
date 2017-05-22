@@ -21,9 +21,31 @@ public class TodoManage extends JFrame {
 	private JPanel contentPane;
 	private TodoManage thisTodoManage = this;
 	private JTable table;
+	private DefaultTableModel TableModel;
+	public JScrollPane scrollPane;	
 	
-
+	private DataBase DataBase;
+	
+	public void UpdateTable(){
+		table = new JTable();
+		TableModel=new DefaultTableModel(DataBase.getTodoElement(),DataBase.TodoColumnNames);
+		table.setModel(TableModel);															 // create a table model 
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.getColumnModel().getColumn(0).setPreferredWidth(201);
+		table.getColumnModel().getColumn(1).setPreferredWidth(96);
+		table.getColumnModel().getColumn(2).setPreferredWidth(157);
+		table.getColumnModel().getColumn(3).setPreferredWidth(51);
+		table.getColumnModel().getColumn(4).setPreferredWidth(97);
+		table.getColumnModel().getColumn(5).setPreferredWidth(104);
+		table.setFillsViewportHeight(true);
+		scrollPane.setViewportView(table);
+		table.setAutoCreateRowSorter(true);										// 테이블 정렬 
+	}
+	
 	public TodoManage(Intro introclass_parm) {
+		
+		DataBase = DataBase.getDataBase();										//데이터 베이스 가져옴 
+		
 		setTitle("TodoManage");
 		introclass = introclass_parm;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,28 +83,21 @@ public class TodoManage extends JFrame {
 		});
 		contentPane.add(btnBack);
 		
-		JScrollPane scrollPane = new JScrollPane();
+	    scrollPane = new JScrollPane();
 		scrollPane.setBounds(28, 12, 489, 379);
 		contentPane.add(scrollPane);
+	
+		this.UpdateTable();										// 초기 테이블 생성 
+
 		
-		table = new JTable();
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Todo", "Prof", "Year/Semester", "Day", "Start", "End"
-			}
-		));
-		table.getColumnModel().getColumn(0).setPreferredWidth(201);
-		table.getColumnModel().getColumn(1).setPreferredWidth(96);
-		table.getColumnModel().getColumn(2).setPreferredWidth(157);
-		table.getColumnModel().getColumn(3).setPreferredWidth(51);
-		table.getColumnModel().getColumn(4).setPreferredWidth(97);
-		table.getColumnModel().getColumn(5).setPreferredWidth(104);
-		table.setFillsViewportHeight(true);
-		scrollPane.setViewportView(table);
-		
-		table.setAutoCreateRowSorter(true);
-	}
 }
+}			
+		
+		
+
+	
+	
+	
+	
+
+
