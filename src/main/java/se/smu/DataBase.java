@@ -20,9 +20,11 @@ public class DataBase {
 		public final String[] Minute = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15",
 				"16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37",
 				"38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"};
+		public final String[] Am = {"AM", "PM"};    //Subject영역에서 사용
+		public final String[] Semester = {"1", "2"};  //Subject영역에서 사용
 
 		
-		
+		Vector<Subject> vectorSubject = new Vector<Subject>();
 		Vector<TodoElement> TodoElement = new Vector <TodoElement>();
 		
 		public static DataBase getDataBase() {
@@ -31,6 +33,34 @@ public class DataBase {
 			}
 			return DataBase;
 		}
+	
+/*
+ * Subject관리 DB 시작.
+ */
+		
+// "name","prof", "selectday", "starthour", "startminute", "endhour", endminute", "year", "semester"
+//subject등록 add
+		public void SubjectAdd(Subject in){
+			vectorSubject.add(in);
+		}
+		
+
+		public String[][] MatrixSubject(){  
+
+			String subjectmatrix[][] = new String[vectorSubject.size()][6];    //이중 배열 선언: int[][] table = new int[5][10];
+			for(int i = 0 ; i < vectorSubject.size() ; i++){
+				//	(Vector에서) Object elementAt(int index): index 위치의 객체를 반환한다.
+				Subject in = vectorSubject.elementAt(i); //index = i인 위치의 객체 반환
+				subjectmatrix[i][0] = in.name;
+				subjectmatrix[i][1] = in.prof;
+				subjectmatrix[i][2] = in.year + "/" + in.semester;
+				subjectmatrix[i][3] = in.selectday;
+				subjectmatrix[i][4] = in.starthour + " : " + in.startminute;
+				subjectmatrix[i][5] = in.endhour + " : " + in.endminute;
+			}
+			return subjectmatrix;
+		}
+		
 //"To do", "Subject", "Deadline", "Due date", "Completed", "Importance"		
 //Todo등록Add
 		public void TodoAdd(TodoElement Element){

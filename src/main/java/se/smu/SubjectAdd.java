@@ -7,6 +7,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import com.toedter.calendar.JYearChooser;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -18,11 +19,15 @@ import java.awt.event.ActionEvent;
 
 public class SubjectAdd extends JFrame {
 	
+	private DataBase DB;
+	
 	private JPanel contentPane;
 	private SubjectManage subjectmanageclass;
 	private SubjectAdd thisSubjectAdd = this;
-	private JTextField textField;
-	private JTextField textField_1;
+	
+	private JTextField txtSubject;
+	private JTextField txtProf;
+	
 	JButton btnMON;
 	JButton btnTUE;
 	JButton btnWED;
@@ -32,8 +37,11 @@ public class SubjectAdd extends JFrame {
 	JButton btnSUN;
 
 	public SubjectAdd(SubjectManage subjectmanage_parm) {
+		DB = DataBase.getDataBase();
+		
 		setTitle("Add");
 		subjectmanageclass = subjectmanage_parm;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 740, 500);
 		contentPane = new JPanel();
@@ -41,9 +49,7 @@ public class SubjectAdd extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Add");
-		btnNewButton.setBounds(595, 38, 105, 45);
-		contentPane.add(btnNewButton);
+
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -55,9 +61,9 @@ public class SubjectAdd extends JFrame {
 		btnBack.setBounds(595, 135, 105, 45);
 		contentPane.add(btnBack);
 		
-		JLabel lblNewLabel = new JLabel("Subject");
-		lblNewLabel.setBounds(30, 51, 89, 18);
-		contentPane.add(lblNewLabel);
+		JLabel lblSubject = new JLabel("Subject");
+		lblSubject.setBounds(30, 51, 89, 18);
+		contentPane.add(lblSubject);
 		
 		JLabel lblProf = new JLabel("Prof");
 		lblProf.setBounds(30, 148, 89, 18);
@@ -67,9 +73,9 @@ public class SubjectAdd extends JFrame {
 		lblYearsemester.setBounds(14, 255, 105, 18);
 		contentPane.add(lblYearsemester);
 		
-		JLabel lblNewLabel_1 = new JLabel("Day");
-		lblNewLabel_1.setBounds(30, 354, 62, 18);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblDay = new JLabel("Day");
+		lblDay.setBounds(30, 354, 62, 18);
+		contentPane.add(lblDay);
 		
 		JLabel lblStart = new JLabel("Start");
 		lblStart.setBounds(332, 51, 34, 18);
@@ -79,50 +85,50 @@ public class SubjectAdd extends JFrame {
 		lblEnd.setBounds(332, 148, 34, 18);
 		contentPane.add(lblEnd);
 		
-		textField = new JTextField();
-		textField.setBounds(133, 45, 116, 24);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtProf = new JTextField();
+		txtProf.setBounds(133, 142, 116, 24);
+		contentPane.add(txtProf);
+		txtProf.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(133, 142, 116, 24);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txtSubject = new JTextField();
+		txtSubject.setBounds(133, 45, 116, 24);
+		contentPane.add(txtSubject);
+		txtSubject.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(437, 45, 34, 24);
-		contentPane.add(comboBox);
+		JComboBox cbStartHour = new JComboBox(DB.Hour);
+		cbStartHour.setBounds(437, 45, 49, 24);
+		contentPane.add(cbStartHour);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(485, 45, 34, 24);
-		contentPane.add(comboBox_1);
+		JComboBox cbStartMinute = new JComboBox(DB.Minute);
+		cbStartMinute.setBounds(500, 45, 49, 24);
+		contentPane.add(cbStartMinute);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(437, 142, 34, 24);
-		contentPane.add(comboBox_2);
+		JComboBox cbStartAm = new JComboBox(DB.Am);
+		cbStartAm.setBounds(374, 45, 49, 24);
+		contentPane.add(cbStartAm);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(485, 142, 34, 24);
-		contentPane.add(comboBox_3);
+		JComboBox cbEndHour = new JComboBox(DB.Hour);
+		cbEndHour.setBounds(437, 142, 49, 24);
+		contentPane.add(cbEndHour);
 		
-		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setBounds(374, 45, 34, 24);
-		contentPane.add(comboBox_4);
+		JComboBox cbEndMinute = new JComboBox(DB.Minute);
+		cbEndMinute.setBounds(500, 142, 49, 24);
+		contentPane.add(cbEndMinute);
 		
-		JComboBox comboBox_5 = new JComboBox();
-		comboBox_5.setBounds(374, 142, 34, 24);
-		contentPane.add(comboBox_5);
+		JComboBox cbEndAm = new JComboBox(DB.Am);
+		cbEndAm.setBounds(374, 142, 49, 24);
+		contentPane.add(cbEndAm);
 		
-		JComboBox comboBox_6 = new JComboBox();
-		comboBox_6.setBounds(133, 252, 78, 24);
-		contentPane.add(comboBox_6);
+		JComboBox cbSemester = new JComboBox(DB.Semester);
+		cbSemester.setBounds(215, 252, 49, 24);
+		contentPane.add(cbSemester);
 		
-		JComboBox comboBox_7 = new JComboBox();
-		comboBox_7.setBounds(215, 252, 34, 24);
-		contentPane.add(comboBox_7);
+		JYearChooser ycYear = new JYearChooser();
+		ycYear.setBounds(133, 252, 79, 24);
+		contentPane.add(ycYear);
 		
 		/*
-		 * 
+		 *각각 버튼 눌렀을때 색 변경 추가
 		 */
 		
 		JButton btnMon = new JButton("MON");
@@ -153,6 +159,35 @@ public class SubjectAdd extends JFrame {
 		btnSun.setBounds(609, 350, 65, 45);
 		contentPane.add(btnSun);
 		
-		
+		/*
+		 * Add버튼 눌렀을때 동작.
+		 * 테이블 업데이트, 정보 get해오기, DB저장 추가
+		 */
+		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int startHour = Integer.parseInt((String) cbStartHour.getSelectedItem());     //combobox안의 내용은 String임! int로 바꿔줘야 함
+				int endHour = Integer.parseInt((String) cbEndHour.getSelectedItem());
+				String startMinute = (String) cbStartMinute.getSelectedItem();
+				String endMinute = (String) cbEndMinute.getSelectedItem();
+				String semester;
+				
+				if (cbStartAm.getSelectedItem() == "PM")   //오후시간이면 12를 더함.
+					startHour = startHour + 12;
+				if (cbEndAm.getSelectedItem() == "PM")
+					endHour = endHour + 12;
+				if (cbSemester.getSelectedItem() == "1")
+					semester = "1";
+				else
+					semester = "2";
+					
+				subjectmanage_parm.setVisible(true);
+				thisSubjectAdd.dispose();
+				
+			}
+		});
+		btnAdd.setBounds(595, 38, 105, 45);
+		contentPane.add(btnAdd);
 	}
 }
