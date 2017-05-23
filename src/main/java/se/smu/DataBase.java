@@ -34,10 +34,7 @@ public class DataBase {
 			return DataBase;
 		}
 	
-/*
- * Subject관리 DB 시작.
- */
-		
+
 // "name","prof", "selectday", "starthour", "startminute", "endhour", endminute", "year", "semester"
 //subject등록 add
 		public void SubjectAdd(Subject in){

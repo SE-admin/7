@@ -80,10 +80,7 @@ public class SubjectChange extends JFrame {
 		lblEnd.setBounds(332, 148, 34, 18);
 		contentPane.add(lblEnd);
 		
-		/*
-		 * DB연동해서 데이터 받아와야함.
-		 * 
-		 */
+		
 		txtSubject = new JTextField(selectedSubject.name);
 		txtSubject.setBounds(133, 45, 116, 24);
 		contentPane.add(txtSubject);
