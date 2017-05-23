@@ -43,7 +43,7 @@ public class TodoManage extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+//ADD 구현완료 	
 		JButton btnAdd = new JButton("Add");
 		btnAdd.setBounds(826, 55, 105, 27);
 		btnAdd.addActionListener(new ActionListener() {
@@ -54,7 +54,7 @@ public class TodoManage extends JFrame {
 		});
 		contentPane.setLayout(null);
 		contentPane.add(btnAdd);
-			
+//Change 구현완료 		
 		JButton btnNewButton = new JButton("Change");
 		btnNewButton.setBounds(826, 120, 105, 27);
 		btnNewButton.addActionListener(new ActionListener() {
