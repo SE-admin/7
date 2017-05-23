@@ -61,7 +61,7 @@ public class TodoChange extends JFrame {
 		lblDueDate.setBounds(310, 161, 61, 16);
 		contentPane.add(lblDueDate);
 		
-		if(selectedTodoElement.DueDate.AM == 0) loadedAmPm ="AM";			//load AM or PM
+		if(selectedTodoElement.DueDate.AM == 0) loadedAmPm ="AM";			 
 		else 									loadedAmPm ="PM";
 		JButton btnAmPmDueDate = new JButton(loadedAmPm);
 		btnAmPmDueDate.addActionListener(new ActionListener() {
