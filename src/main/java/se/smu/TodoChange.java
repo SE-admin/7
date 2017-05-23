@@ -61,9 +61,11 @@ public class TodoChange extends JFrame {
 		lblDueDate.setBounds(310, 161, 61, 16);
 		contentPane.add(lblDueDate);
 		
-		if(selectedTodoElement.DueDate.AM == 0) loadedAmPm ="AM";			 
+		
+		JButton btnAmPmDueDate = new JButton();
+		if(selectedTodoElement.DueDate.get(Calendar.AM_PM ) == 0) loadedAmPm ="AM";			//load AM or PM
 		else 									loadedAmPm ="PM";
-		JButton btnAmPmDueDate = new JButton(loadedAmPm);
+		btnAmPmDueDate.setText(loadedAmPm);
 		btnAmPmDueDate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if((btnAmPmDueDate.getText()).equals("AM"))
@@ -75,9 +77,11 @@ public class TodoChange extends JFrame {
 		btnAmPmDueDate.setBounds(367, 156, 59, 29);
 		contentPane.add(btnAmPmDueDate);
 		
-		if(selectedTodoElement.Deadline.AM == 0) loadedAmPm ="AM";
+	
+		JButton btnAmPmDeadline = new JButton();
+		if(selectedTodoElement.Deadline.get(Calendar.AM_PM) == 0) loadedAmPm ="AM";		//load AM or PM
 		else  									 loadedAmPm ="PM";
-		JButton btnAmPmDeadline = new JButton(loadedAmPm);
+		btnAmPmDeadline.setText(loadedAmPm);
 		btnAmPmDeadline.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if((btnAmPmDeadline.getText()).equals("AM"))
