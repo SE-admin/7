@@ -13,16 +13,21 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import com.toedter.calendar.JYearChooser;
+
 public class SubjectChange extends JFrame {
 
 	private JPanel contentPane;
 	private SubjectManage subjectmanageclass;
 	private SubjectChange thisSubjectChange = this;
-	private JTextField textField;
-	private JTextField textField_1;
+	
+	private JTextField txtSubject;
+	private JTextField txtProf;
 
 
 	public SubjectChange(SubjectManage subjectmanage_parm) {
+		
+		
 		setTitle("Change");
 		subjectmanageclass = subjectmanage_parm;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,10 +37,6 @@ public class SubjectChange extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JButton btnNewButton = new JButton("Change");
-		btnNewButton.setBounds(595, 38, 105, 45);
-		contentPane.add(btnNewButton);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -71,67 +72,75 @@ public class SubjectChange extends JFrame {
 		lblEnd.setBounds(332, 148, 34, 18);
 		contentPane.add(lblEnd);
 		
-		textField = new JTextField();
-		textField.setBounds(133, 45, 116, 24);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		/*
+		 * DB연동해서 데이터 받아와야함.
+		 * 
+		 */
+		txtSubject = new JTextField();
+		txtSubject.setBounds(133, 45, 116, 24);
+		contentPane.add(txtSubject);
+		txtSubject.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(133, 142, 116, 24);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txtProf = new JTextField();
+		txtProf.setBounds(133, 142, 116, 24);
+		contentPane.add(txtProf);
+		txtProf.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(437, 45, 34, 24);
-		contentPane.add(comboBox);
+		JComboBox cbStartHour = new JComboBox();
+		cbStartHour.setBounds(437, 45, 49, 24);
+		contentPane.add(cbStartHour);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(485, 45, 34, 24);
-		contentPane.add(comboBox_1);
+		JComboBox cbStartMinute = new JComboBox();
+		cbStartMinute.setBounds(495, 45, 49, 24);
+		contentPane.add(cbStartMinute);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(437, 142, 34, 24);
-		contentPane.add(comboBox_2);
+		JComboBox cbEndHour = new JComboBox();
+		cbEndHour.setBounds(437, 142, 49, 24);
+		contentPane.add(cbEndHour);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(485, 142, 34, 24);
-		contentPane.add(comboBox_3);
+		JComboBox cbEndMinute = new JComboBox();
+		cbEndMinute.setBounds(495, 142, 49, 24);
+		contentPane.add(cbEndMinute);
 		
-		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setBounds(374, 45, 34, 24);
-		contentPane.add(comboBox_4);
+		JComboBox cbStartAm = new JComboBox();
+		cbStartAm.setBounds(374, 45, 49, 24);
+		contentPane.add(cbStartAm);
 		
-		JComboBox comboBox_5 = new JComboBox();
-		comboBox_5.setBounds(374, 142, 34, 24);
-		contentPane.add(comboBox_5);
+		JComboBox cbEndAm = new JComboBox();
+		cbEndAm.setBounds(374, 142, 49, 24);
+		contentPane.add(cbEndAm);
 		
-		JComboBox comboBox_6 = new JComboBox();
-		comboBox_6.setBounds(133, 252, 78, 24);
-		contentPane.add(comboBox_6);
+		JYearChooser ycYear = new JYearChooser();
+		ycYear.setBounds(133, 255, 79, 24);
+		contentPane.add(ycYear);
 		
-		JComboBox comboBox_7 = new JComboBox();
-		comboBox_7.setBounds(215, 252, 34, 24);
-		contentPane.add(comboBox_7);
+		JComboBox cbSemester = new JComboBox();
+		cbSemester.setBounds(215, 255, 45, 24);
+		contentPane.add(cbSemester);
+		
+		/*
+		 * 요일 버튼 클릭 동작
+		 */
 		
 		JButton btnMon = new JButton("MON");
 		btnMon.setBounds(133, 350, 65, 45);
 		contentPane.add(btnMon);
 		
-		JButton btnNewButton_1 = new JButton("TUE");
-		btnNewButton_1.setBounds(215, 350, 65, 45);
-		contentPane.add(btnNewButton_1);
+		JButton btnTue = new JButton("TUE");
+		btnTue.setBounds(215, 350, 65, 45);
+		contentPane.add(btnTue);
 		
-		JButton btnNewButton_2 = new JButton("WED");
-		btnNewButton_2.setBounds(294, 350, 65, 45);
-		contentPane.add(btnNewButton_2);
+		JButton btnWed = new JButton("WED");
+		btnWed.setBounds(294, 350, 65, 45);
+		contentPane.add(btnWed);
 		
-		JButton btnNewButton_3 = new JButton("THU");
-		btnNewButton_3.setBounds(374, 350, 65, 45);
-		contentPane.add(btnNewButton_3);
+		JButton btnThu = new JButton("THU");
+		btnThu.setBounds(374, 350, 65, 45);
+		contentPane.add(btnThu);
 		
-		JButton btnNewButton_4 = new JButton("FRI");
-		btnNewButton_4.setBounds(453, 350, 65, 45);
-		contentPane.add(btnNewButton_4);
+		JButton btnFri = new JButton("FRI");
+		btnFri.setBounds(453, 350, 65, 45);
+		contentPane.add(btnFri);
 		
 		JButton btnSat = new JButton("SAT");
 		btnSat.setBounds(532, 350, 65, 45);
@@ -140,6 +149,13 @@ public class SubjectChange extends JFrame {
 		JButton btnSun = new JButton("SUN");
 		btnSun.setBounds(609, 350, 65, 45);
 		contentPane.add(btnSun);
+		
+		/*
+		 * Change 버튼 눌렀을때 변겨된 내용으로 새로 업데이트
+		 */
+		JButton btnNewButton = new JButton("Change");
+		btnNewButton.setBounds(595, 38, 105, 45);
+		contentPane.add(btnNewButton);
 	}
 
 }

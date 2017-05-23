@@ -47,6 +47,8 @@ public class SubjectManage extends JFrame {
 	}
 	
 	public SubjectManage(Intro introclass_parm) {
+		DB = DataBase.getDataBase();
+		
 		setTitle("SubjectManage");
 		introclass = introclass_parm;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,23 +96,7 @@ public class SubjectManage extends JFrame {
 		scrollPane.setBounds(28, 12, 489, 379);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Subject", "Prof", "Year/Semester", "Day", "Start", "End"
-			}
-		));
-		table.getColumnModel().getColumn(0).setPreferredWidth(201);
-		table.getColumnModel().getColumn(1).setPreferredWidth(96);
-		table.getColumnModel().getColumn(2).setPreferredWidth(157);
-		table.getColumnModel().getColumn(3).setPreferredWidth(51);
-		table.getColumnModel().getColumn(4).setPreferredWidth(97);
-		table.getColumnModel().getColumn(5).setPreferredWidth(104);
-		table.setFillsViewportHeight(true);
-		scrollPane.setViewportView(table);
+		this.SubjectTable();
 		
 	}
 }
