@@ -103,6 +103,7 @@ public class TodoChange extends JFrame {
 		txtTodo.setColumns(10);
 		txtTodo.setBounds(65, 61, 441, 26);
 		contentPane.add(txtTodo);
+		
 //TODO subject연동 
 		JComboBox cbSubject = new JComboBox();
 		cbSubject.setBounds(81, 102, 200, 27);
@@ -145,7 +146,6 @@ public class TodoChange extends JFrame {
 		cbDueDateMinute.setBounds(489, 157, 65, 27);
 		contentPane.add(cbDueDateMinute);
 
-//*TODO 캘린더 기존거 불러오도록 해야함!!!+클릭된거 색깔체크로 보여줄것  ~>TodoAdd도 마찬가지 
 		JCalendar JCalendarDueDate = new JCalendar();
 		JCalendarDueDate.setWeekOfYearVisible(false);
 		JCalendarDueDate.setNullDateButtonText("");
