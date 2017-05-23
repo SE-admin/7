@@ -44,6 +44,15 @@ public class DataBase {
 			vectorSubject.add(in);
 		}
 		
+		public void SubjectChange(Subject Element, int selectedRow){
+			vectorSubject.set(selectedRow, Element);								
+		}
+		
+		public Subject getSelectedSubject(int selectedRow){
+			Subject selectedSubject = vectorSubject.get(selectedRow);		
+			return selectedSubject;
+		}
+		
 
 		public String[][] MatrixSubject(){  
 
