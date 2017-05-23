@@ -4,12 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -87,6 +90,7 @@ public class TodoManage extends JFrame {
 		thisTodoManage.UpdateTable();						// Create initial table 
 
 		
+		
 }
 //initiate & update table
 	public void UpdateTable(){   
@@ -102,6 +106,12 @@ public class TodoManage extends JFrame {
 		table.getColumnModel().getColumn(4).setPreferredWidth(50);
 		table.getColumnModel().getColumn(5).setPreferredWidth(50);
 		table.setFillsViewportHeight(true);
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		
+		centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );				//center the 'Completed' and 'Importance' column
+		table.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
+		table.getColumnModel().getColumn(5).setCellRenderer( centerRenderer );	
+		
 		scrollPane.setViewportView(table);
 		table.setAutoCreateRowSorter(true);										 // sort table
 		}
