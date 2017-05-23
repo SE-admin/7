@@ -29,23 +29,8 @@ public class TodoManage extends JFrame {
 	
 /* 
  * 	use UpdateTable() for initiating and updating table
- */
-	public void UpdateTable(){   
-		table = new JTable();
-		TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
-		table.setModel(TableModel);																// set table model 
-		
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.getColumnModel().getColumn(0).setPreferredWidth(150);
-		table.getColumnModel().getColumn(1).setPreferredWidth(96);
-		table.getColumnModel().getColumn(2).setPreferredWidth(157);
-		table.getColumnModel().getColumn(3).setPreferredWidth(157);
-		table.getColumnModel().getColumn(4).setPreferredWidth(50);
-		table.getColumnModel().getColumn(5).setPreferredWidth(50);
-		table.setFillsViewportHeight(true);
-		scrollPane.setViewportView(table);
-		table.setAutoCreateRowSorter(true);										 // sort table
-	}
+ *  methods is specified down below the class
+*/
 	
 	public TodoManage(Intro introclass_parm) {
 		
@@ -74,7 +59,7 @@ public class TodoManage extends JFrame {
 		btnNewButton.setBounds(826, 120, 105, 27);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int selectedRow = table.convertColumnIndexToModel(table.getSelectedRow());
+				int selectedRow = table.convertRowIndexToModel(table.getSelectedRow());					// jtable에는 view index, model index따로존재 mapping정보 알 수 있다. 
 				TodoChange todochange = new TodoChange(thisTodoManage, selectedRow);
 				todochange.setVisible(true);
 			}
@@ -99,11 +84,29 @@ public class TodoManage extends JFrame {
 		scrollPane.setBounds(28, 12, 786, 379);
 		contentPane.add(scrollPane);
 	
-		this.UpdateTable();						// Create initial table 
+		thisTodoManage.UpdateTable();						// Create initial table 
 
 		
 }
-}			
+//initiate & update table
+	public void UpdateTable(){   
+		table = new JTable();
+		TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
+		table.setModel(TableModel);																// set table model 
+			
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.getColumnModel().getColumn(0).setPreferredWidth(150);
+		table.getColumnModel().getColumn(1).setPreferredWidth(96);
+		table.getColumnModel().getColumn(2).setPreferredWidth(157);
+		table.getColumnModel().getColumn(3).setPreferredWidth(157);
+		table.getColumnModel().getColumn(4).setPreferredWidth(50);
+		table.getColumnModel().getColumn(5).setPreferredWidth(50);
+		table.setFillsViewportHeight(true);
+		scrollPane.setViewportView(table);
+		table.setAutoCreateRowSorter(true);										 // sort table
+		}
+	}			
+
 		
 		
 

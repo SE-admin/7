@@ -122,28 +122,28 @@ public class TodoChange extends JFrame {
 		contentPane.add(checkCompleted);
 		
 		JComboBox cbDeadlineHour = new JComboBox(DataBase.Hour);
-		cbDeadlineHour.setSelectedIndex(selectedTodoElement.Deadline.HOUR);							// Load hour  
+		cbDeadlineHour.setSelectedIndex(selectedTodoElement.Deadline.get(Calendar.HOUR)-1);							// Load hour indx접근이기떄문에 0부터..~> -1해준다.
 		cbDeadlineHour.setMaximumRowCount(12);
-		cbDeadlineHour.setBounds(157, 157, 65, 27);
+		cbDeadlineHour.setBounds(157, 157, 77, 27);
 		contentPane.add(cbDeadlineHour);
 		
 		JComboBox cbDeadlineMinute = new JComboBox(DataBase.Minute);
-		cbDeadlineMinute.setSelectedIndex(selectedTodoElement.Deadline.MINUTE);					  //
+		cbDeadlineMinute.setSelectedIndex(selectedTodoElement.Deadline.get(Calendar.MINUTE));					  //
 		cbDeadlineMinute.setMaximumRowCount(59);
-		cbDeadlineMinute.setBounds(230, 157, 70, 27);
+		cbDeadlineMinute.setBounds(230, 157, 68, 27);
 		contentPane.add(cbDeadlineMinute);
 		
 		JComboBox cbDueDateHour = new JComboBox(DataBase.Hour);
-		cbDueDateHour.setSelectedIndex(selectedTodoElement.DueDate.HOUR);							//
+		cbDueDateHour.setSelectedIndex(selectedTodoElement.DueDate.get(Calendar.HOUR)-1);							//
 		cbDueDateHour.setMaximumRowCount(12);
-		cbDueDateHour.setBounds(430, 157, 52, 27);
+		cbDueDateHour.setBounds(423, 157, 83, 27);
 		contentPane.add(cbDueDateHour);
 		
 		
 		JComboBox cbDueDateMinute = new JComboBox(DataBase.Minute);
-		cbDueDateMinute.setSelectedIndex(selectedTodoElement.DueDate.MINUTE);					//
+		cbDueDateMinute.setSelectedIndex(selectedTodoElement.DueDate.get(Calendar.MINUTE));					//
 		cbDueDateMinute.setMaximumRowCount(12);
-		cbDueDateMinute.setBounds(489, 157, 65, 27);
+		cbDueDateMinute.setBounds(507, 157, 98, 27);
 		contentPane.add(cbDueDateMinute);
 
 		JCalendar JCalendarDueDate = new JCalendar();
