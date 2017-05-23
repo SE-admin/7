@@ -71,36 +71,43 @@ public class DataBase {
 		}
 		
 //"To do", "Subject", "Deadline", "Due date", "Completed", "Importance"		
-//Todo등록Add
 		public void TodoAdd(TodoElement Element){
 			TodoElement.add(Element);
 		}
 		
+		public void TodoChange(TodoElement Element, int selectedRow){
+			TodoElement.set(selectedRow, Element);							// replace specific vector from selected row	
+		}
+
+// selected todo아이템에 대한 return todoitelement (화면에 기존 정보 뿌리기위함)
+// selected row에 대한 index필요 ~> ind exx로 vector 찾아 리턴
+		public TodoElement getSelectedTodoElement(int selectedRow){
+			TodoElement selectedTodoElement = TodoElement.get(selectedRow);		// find which Todoitem is selected in Vector 
+			return selectedTodoElement;
+		}
 	
-//Todoelement 2차원 배열화 ~> datamodel에 사용을 위함 Object [] []로 행값 넘겨줌 
+//Todoelement 2차원 배열화 ~> datamodel에 사용을 위함 * Object [] [] 행값 넘겨줌 
 		
-		public String[][] getTodoElement(){
+		public String[][] MatrixTodoElement(){
 			String [][] TodoMatrix= new String [TodoElement.size()][6];   //배열 선언 후 iterator를 통한 순차접근~> maxtrix채운다.
 			Iterator<TodoElement> iterator=TodoElement.iterator();
 			TodoElement element=new TodoElement();
+					
 			for(int i=0; iterator.hasNext();i++){
 				element=iterator.next();
 				TodoMatrix[i][0]=element.Todo;
 				TodoMatrix[i][1]=element.Subject;
-				
-				SimpleDateFormat Dead_sdf=new SimpleDateFormat("yyyy-M-dd hh:mm");     //Date출력 형식 지정 
+				SimpleDateFormat Dead_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a");     //Date출력 형식 지정 * 'a' is Am/pm marker
 				TodoMatrix[i][2]=Dead_sdf.format(element.Deadline.getTime());						//Convert Date to String
-
-				SimpleDateFormat Due_sdf=new SimpleDateFormat("yyyy-M-dd hh:mm"); 
+				SimpleDateFormat Due_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a"); 
 				TodoMatrix[i][3]=Due_sdf.format(element.DueDate.getTime());	
-				
 				if (element.Completed==true) TodoMatrix[i][4]="O" ;
 				else TodoMatrix[i][4]="X";
-				if (element.Importance==true) TodoMatrix[i][4]="O" ;
-				else TodoMatrix[i][4]="X";	
+				if (element.Importance==true) TodoMatrix[i][5]="O" ;
+				else TodoMatrix[i][5]="X";	
 			}
 			return TodoMatrix;	
-		}
+		}	
 		
 		
 	

@@ -20,42 +20,32 @@ public class TodoManage extends JFrame {
 	private Intro introclass;
 	private JPanel contentPane;
 	private TodoManage thisTodoManage = this;
+	
 	private JTable table;
 	private DefaultTableModel TableModel;
 	public JScrollPane scrollPane;	
 	
 	private DataBase DataBase;
 	
-	public void UpdateTable(){
-		table = new JTable();
-		TableModel=new DefaultTableModel(DataBase.getTodoElement(),DataBase.TodoColumnNames);
-		table.setModel(TableModel);															 // create a table model 
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.getColumnModel().getColumn(0).setPreferredWidth(201);
-		table.getColumnModel().getColumn(1).setPreferredWidth(96);
-		table.getColumnModel().getColumn(2).setPreferredWidth(157);
-		table.getColumnModel().getColumn(3).setPreferredWidth(51);
-		table.getColumnModel().getColumn(4).setPreferredWidth(97);
-		table.getColumnModel().getColumn(5).setPreferredWidth(104);
-		table.setFillsViewportHeight(true);
-		scrollPane.setViewportView(table);
-		table.setAutoCreateRowSorter(true);										// 테이블 정렬 
-	}
+/* 
+ * 	use UpdateTable() for initiating and updating table
+ *  methods is specified down below the class
+*/
 	
 	public TodoManage(Intro introclass_parm) {
 		
-		DataBase = DataBase.getDataBase();										//데이터 베이스 가져옴 
+		DataBase = DataBase.getDataBase();										//Import DB to Manage Todo 
 		
 		setTitle("TodoManage");
 		introclass = introclass_parm;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 740, 470);
+		setBounds(100, 100, 952, 470);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+//ADD 구현완료 	
 		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(579, 46, 105, 27);
+		btnAdd.setBounds(826, 55, 105, 27);
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TodoAdd todoadd1 = new TodoAdd(thisTodoManage);
@@ -64,17 +54,24 @@ public class TodoManage extends JFrame {
 		});
 		contentPane.setLayout(null);
 		contentPane.add(btnAdd);
-		
+//Change 구현완료 		
 		JButton btnNewButton = new JButton("Change");
-		btnNewButton.setBounds(579, 111, 105, 27);
+		btnNewButton.setBounds(826, 120, 105, 27);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = table.convertRowIndexToModel(table.getSelectedRow());					// jtable에는 view index, model index따로존재 mapping정보 알 수 있다. 
+				TodoChange todochange = new TodoChange(thisTodoManage, selectedRow);
+				todochange.setVisible(true);
+			}
+		});
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Delete");
-		btnNewButton_1.setBounds(579, 186, 105, 27);
+		btnNewButton_1.setBounds(826, 195, 105, 27);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(579, 333, 105, 27);
+		btnBack.setBounds(826, 342, 105, 27);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				introclass.setVisible(true);
@@ -84,14 +81,32 @@ public class TodoManage extends JFrame {
 		contentPane.add(btnBack);
 		
 	    scrollPane = new JScrollPane();
-		scrollPane.setBounds(28, 12, 489, 379);
+		scrollPane.setBounds(28, 12, 786, 379);
 		contentPane.add(scrollPane);
 	
-		this.UpdateTable();										// 초기 테이블 생성 
+		thisTodoManage.UpdateTable();						// Create initial table 
 
 		
 }
-}			
+//initiate & update table
+	public void UpdateTable(){   
+		table = new JTable();
+		TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
+		table.setModel(TableModel);																// set table model 
+			
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.getColumnModel().getColumn(0).setPreferredWidth(150);
+		table.getColumnModel().getColumn(1).setPreferredWidth(96);
+		table.getColumnModel().getColumn(2).setPreferredWidth(157);
+		table.getColumnModel().getColumn(3).setPreferredWidth(157);
+		table.getColumnModel().getColumn(4).setPreferredWidth(50);
+		table.getColumnModel().getColumn(5).setPreferredWidth(50);
+		table.setFillsViewportHeight(true);
+		scrollPane.setViewportView(table);
+		table.setAutoCreateRowSorter(true);										 // sort table
+		}
+	}			
+
 		
 		
 
