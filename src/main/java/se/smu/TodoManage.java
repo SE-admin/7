@@ -70,6 +70,17 @@ public class TodoManage extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Delete");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				int selectedRow=table.convertColumnIndexToModel(table.getSelectedRow());
+				TodoElement selectedTodoElement = DataBase.getSelectedTodoElement(selectedRow);	//load selected Todo element on each field
+				DataBase.getSelectedTodoElement(selectedRow);
+				DataBase.TodoDelete(selectedTodoElement, selectedRow);
+				
+				thisTodoManage.UpdateTable();
+			}
+		});
 		btnNewButton_1.setBounds(826, 195, 105, 27);
 		contentPane.add(btnNewButton_1);
 		
