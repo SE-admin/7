@@ -29,8 +29,8 @@ public class SubjectManage extends JFrame {
 	public JScrollPane scrollPane;
 	
 	public void SubjectTable(){
-		String[] SubjectColumnNames={"Subject", "Prof", "Year/Semester", "Day", "Start", "End"};
-		SubTable = new DefaultTableModel(DB.MatrixSubject(), SubjectColumnNames);
+		//String[] SubjectColumnNames={"Subject", "Prof", "Year/Semester", "Day", "Start", "End"};
+		SubTable = new DefaultTableModel(DB.MatrixSubject(), DB.SubjectColumnNames);
 		table = new JTable(SubTable);
 		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
