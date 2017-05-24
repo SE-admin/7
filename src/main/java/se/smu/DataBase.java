@@ -82,7 +82,10 @@ public class DataBase {
 			TodoElement selectedTodoElement = TodoElement.get(selectedRow);		// find which Todoitem is selected in Vector 
 			return selectedTodoElement;
 		}
-	
+		
+		public void TodoDelete(TodoElement Element, int selectedRow){
+			TodoElement.remove(selectedRow);								// remove selected vector 
+		}
 //Todoelement 2차원 배열화 ~> datamodel에 사용을 위함 * Object [] [] 행값 넘겨줌 
 		
 		public String[][] MatrixTodoElement(){
