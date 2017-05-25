@@ -10,6 +10,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+
 public class DataBase {
 	private static DataBase DataBase;
 	
@@ -50,7 +51,10 @@ public class DataBase {
 			return selectedSubject;
 		}
 		
-
+		public void SubjectDelete(Subject Element, int selectedRow){
+			vectorSubject.remove(selectedRow);								
+		}
+		
 		public String[][] MatrixSubject(){  
 
 			String subjectmatrix[][] = new String[vectorSubject.size()][6];    //이중 배열 선언: int[][] table = new int[5][10];
@@ -65,6 +69,15 @@ public class DataBase {
 				subjectmatrix[i][5] = in.endhour + " : " + in.endminute;
 			}
 			return subjectmatrix;
+		}
+		
+		public String[] getSubjectName(){
+			String SubjectName[] = new String[vectorSubject.size()];
+			for(int i=0; i<vectorSubject.size(); i++){
+				Subject s = vectorSubject.elementAt(i);
+				SubjectName[i] = s.name;
+			}
+			return SubjectName;
 		}
 		
 //"To do", "Subject", "Deadline", "Due date", "Completed", "Importance"		
