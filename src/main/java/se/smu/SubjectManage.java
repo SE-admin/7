@@ -28,6 +28,9 @@ public class SubjectManage extends JFrame {
 	private DefaultTableModel SubTable;
 	public JScrollPane scrollPane;
 	
+	/*
+	 * 과목 열람이 가능하게 하는 table 업데이트 함수.
+	 */
 	public void SubjectTable(){
 		//String[] SubjectColumnNames={"Subject", "Prof", "Year/Semester", "Day", "Start", "End"};
 		SubTable = new DefaultTableModel(DB.MatrixSubject(), DB.SubjectColumnNames);
@@ -73,14 +76,16 @@ public class SubjectManage extends JFrame {
 		btnChange.setBounds(531, 116, 105, 39);
 		btnChange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				int selectedrow = table.convertRowIndexToModel(table.getSelectedRow());
+				SubjectChange subjectchange = new SubjectChange(thisSubjectManage, selectedrow);
+				subjectchange.setVisible(true);
 			}
 		});
 		contentPane.add(btnChange);
 		
-		JButton btnNewButton_1 = new JButton("Delete");
-		btnNewButton_1.setBounds(531, 206, 105, 39);
-		contentPane.add(btnNewButton_1);
+		/*
+		 * Delete 버튼 수정
+		 */
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(531, 317, 105, 46);
