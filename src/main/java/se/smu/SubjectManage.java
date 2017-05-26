@@ -14,6 +14,7 @@ import java.awt.ScrollPane;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
+
 import javax.swing.ListSelectionModel;
 
 public class SubjectManage extends JFrame {
@@ -86,6 +87,21 @@ public class SubjectManage extends JFrame {
 		/*
 		 * Delete 버튼 수정
 		 */
+		
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int selectedRow=table.convertRowIndexToModel(table.getSelectedRow());
+				Subject selectedSubject = DB.getSelectedSubject(selectedRow);	//load selected Todo element on each field
+				DB.getSelectedSubject(selectedRow);
+				DB.SubjectDelete(selectedSubject, selectedRow);
+				
+				thisSubjectManage.SubjectTable();
+			}
+		});
+		btnDelete.setBounds(531, 206, 105, 39);
+		contentPane.add(btnDelete);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(531, 317, 105, 46);
