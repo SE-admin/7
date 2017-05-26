@@ -126,10 +126,9 @@ public class TodoManage extends JFrame {
 		table.getColumnModel().getColumn(5).setCellRenderer( centerRenderer );	
 
 //과목정렬, 마감기한, 실제 마감일 , 완료 여부 정렬 
-		//scrollPane.setViewportView(table);
-		//RowSorter sorter = new TableRowSorter(TableModel);
-	   // table.setRowSorter(sorter);
-		table.setAutoCreateRowSorter(true);										 // sort table
+		scrollPane.setViewportView(table);
+		RowSorter sorter = new TableRowSorter(TableModel);
+		table.setRowSorter(sorter);									 // sort table
 		}
 	}			
 
