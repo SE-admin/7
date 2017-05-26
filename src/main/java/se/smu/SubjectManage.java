@@ -1,6 +1,7 @@
 package se.smu;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,11 +11,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
-import java.awt.ScrollPane;
+
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
-
-
 import javax.swing.ListSelectionModel;
 
 public class SubjectManage extends JFrame {
@@ -22,20 +21,17 @@ public class SubjectManage extends JFrame {
 	private JPanel contentPane;
 	
 	private SubjectManage thisSubjectManage = this;
-
-	private DataBase DB;
-
-	private JTable table;
-	private DefaultTableModel SubTable;
-	public JScrollPane scrollPane;
 	
-	/*
-	 * 과목 열람이 가능하게 하는 table 업데이트 함수.
-	 */
+	private DataBase DB;
+	
+	private JTable table;
+	private DefaultTableModel TableModel;
+	public JScrollPane scrollPane;	
+	
 	public void SubjectTable(){
-		//String[] SubjectColumnNames={"Subject", "Prof", "Year/Semester", "Day", "Start", "End"};
-		SubTable = new DefaultTableModel(DB.MatrixSubject(), DB.SubjectColumnNames);
-		table = new JTable(SubTable);
+		String[] SubjectColumnNames={"Subject", "Prof", "Year/Semester", "Day", "Start", "End"};
+		TableModel = new DefaultTableModel(DB.MatrixSubject(), SubjectColumnNames);
+		table = new JTable(TableModel);
 		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.getColumnModel().getColumn(0).setPreferredWidth(150);
@@ -49,7 +45,8 @@ public class SubjectManage extends JFrame {
 		table.setAutoCreateRowSorter(true);	
 		
 	}
-	
+
+
 	public SubjectManage(Intro introclass_parm) {
 		DB = DataBase.getDataBase();
 		
@@ -61,9 +58,9 @@ public class SubjectManage extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnNewButton = new JButton("Add");
-		btnNewButton.setBounds(531, 33, 105, 39);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnAdd = new JButton("Add");
+		btnAdd.setBounds(531, 33, 105, 39);
+		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//thisSubjectManage.setVisible(false);
 				SubjectAdd subjectadd1 = new SubjectAdd(thisSubjectManage);
@@ -71,7 +68,7 @@ public class SubjectManage extends JFrame {
 			}
 		});
 		contentPane.setLayout(null);
-		contentPane.add(btnNewButton);
+		contentPane.add(btnAdd);
 		
 		JButton btnChange = new JButton("Change");
 		btnChange.setBounds(531, 116, 105, 39);
@@ -83,10 +80,6 @@ public class SubjectManage extends JFrame {
 			}
 		});
 		contentPane.add(btnChange);
-		
-		/*
-		 * Delete 버튼 수정
-		 */
 		
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
@@ -113,11 +106,10 @@ public class SubjectManage extends JFrame {
 		});
 		contentPane.add(btnBack);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(28, 12, 489, 379);
 		contentPane.add(scrollPane);
-		
+
 		this.SubjectTable();
-		
 	}
 }
