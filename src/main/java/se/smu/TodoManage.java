@@ -9,9 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowSorter;
 import javax.swing.SwingConstants;
 
 import java.awt.event.ActionListener;
@@ -37,7 +39,7 @@ public class TodoManage extends JFrame {
 	
 	public TodoManage(Intro introclass_parm) {
 		
-		DataBase = DataBase.getDataBase();										//Import DB to Manage Todo 
+		DataBase = DataBase.getDataBase();										//Import DB to Manage To do 
 		
 		setTitle("TodoManage");
 		introclass = introclass_parm;
@@ -122,8 +124,11 @@ public class TodoManage extends JFrame {
 		centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );				//center the 'Completed' and 'Importance' column
 		table.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
 		table.getColumnModel().getColumn(5).setCellRenderer( centerRenderer );	
-		
-		scrollPane.setViewportView(table);
+
+//과목정렬 
+		//scrollPane.setViewportView(table);
+		//RowSorter sorter = new TableRowSorter(TableModel);
+	   // table.setRowSorter(sorter);
 		table.setAutoCreateRowSorter(true);										 // sort table
 		}
 	}			
