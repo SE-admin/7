@@ -84,7 +84,7 @@ public class SubjectManage extends JFrame {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+			
 				int selectedRow=table.convertRowIndexToModel(table.getSelectedRow());
 				Subject selectedSubject = DB.getSelectedSubject(selectedRow);	//load selected Todo element on each field
 				DB.getSelectedSubject(selectedRow);
