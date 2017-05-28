@@ -236,7 +236,7 @@ public class SubjectAdd extends JFrame {
 					SelectDay = btnSun.getText();
 				
 				
-				Subject addSubject = new Subject(txtSubject.getText(), txtProf.getText(), SelectDay, startHour, startMinute,
+				SubjectElement addSubject = new SubjectElement(txtSubject.getText(), txtProf.getText(), SelectDay, startHour, startMinute,
 						endHour, endMinute, ycYear.getValue(), semester);    //subject 구조체(?)에 내용 저장
 				
 				//DB의 Subject벡터에 꼬리 달기

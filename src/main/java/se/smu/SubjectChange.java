@@ -26,7 +26,7 @@ public class SubjectChange extends JFrame {
 	private SubjectManage subjectmanageclass;
 	private SubjectChange thisSubjectChange = this;
 	
-	public Subject Subject;
+	public SubjectElement SubjectElement;
 	
 	private JTextField txtSubject;
 	private JTextField txtProf;
@@ -34,7 +34,7 @@ public class SubjectChange extends JFrame {
 
 	public SubjectChange(SubjectManage subjectmanage_parm, int selectedRow) {
 		DB = DataBase.getDataBase();
-		Subject selectedSubject = DB.getSelectedSubject(selectedRow);
+		SubjectElement selectedSubject = DB.getSelectedSubject(selectedRow);
 		
 		setTitle("Change");
 		subjectmanageclass = subjectmanage_parm;
@@ -244,7 +244,7 @@ public class SubjectChange extends JFrame {
 					else if (btnSun.getBackground() == Color.CYAN)
 						SelectDay = btnSun.getText();
 					
-					Subject addSubject = new Subject(txtSubject.getText(), txtProf.getText(), SelectDay, startHour, startMinute,
+					SubjectElement addSubject = new SubjectElement(txtSubject.getText(), txtProf.getText(), SelectDay, startHour, startMinute,
 							endHour, endMinute, ycYear.getValue(), semester);    //subject에 내용 저장
 					
 					//SubjectManage의 화면 테이블에 내용 add

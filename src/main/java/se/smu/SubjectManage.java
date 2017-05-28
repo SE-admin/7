@@ -86,7 +86,7 @@ public class SubjectManage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			
 				int selectedRow=table.convertRowIndexToModel(table.getSelectedRow());
-				Subject selectedSubject = DB.getSelectedSubject(selectedRow);	//load selected Todo element on each field
+				SubjectElement selectedSubject = DB.getSelectedSubject(selectedRow);	//load selected Todo element on each field
 				DB.getSelectedSubject(selectedRow);
 				DB.SubjectDelete(selectedSubject, selectedRow);
 				

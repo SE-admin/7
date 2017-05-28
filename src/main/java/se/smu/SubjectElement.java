@@ -1,8 +1,6 @@
 package se.smu;
 
-public class Subject {
-	
-	//"name", "prof", "selectday", "starthour", "startminute", "endhour", endminute", "year", "semester"
+public class SubjectElement {
 	public String name;
 	public String prof;
 	public String selectday;
@@ -13,12 +11,10 @@ public class Subject {
 	public int year;
 	public String semester;
 	
-	/*
-	 * 과목별 정보를 받아옴
-	 */
-	public Subject(String name, String prof, String selectDay, int startHour, String startMinute, int endHour,
+	
+	public SubjectElement(String name, String prof, String selectDay, int startHour, String startMinute, int endHour,
 			String endMinute, int year, String semester) { 
-		this.name = name; // this.name=>public class Subject의 name
+		this.name = name; // this.name=>public class Subject�� name
 		this.prof = prof;
 		this.selectday = selectDay;
 		this.starthour = startHour;
