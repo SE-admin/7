@@ -74,29 +74,26 @@ public class TodoAdd extends JFrame {
 		JLabel lblDeadline = new JLabel("Deadline");
 		lblDeadline.setBounds(45, 161, 61, 16);
 		contentPane.add(lblDeadline);
-		
+/*		
 		JLabel lbCompleted = new JLabel("Compeleted");
 		lbCompleted.setBounds(331, 116, 96, 16);
 		contentPane.add(lbCompleted);
-		
-		JLabel lblNewLabel_1 = new JLabel("Due Date");
-		lblNewLabel_1.setBounds(331, 161, 61, 16);
-		contentPane.add(lblNewLabel_1);
-		
+*/				
 		txtTodo = new JTextField();
 		txtTodo.setBounds(104, 61, 441, 26);
 		contentPane.add(txtTodo);
 		txtTodo.setColumns(10);
 		
-		JComboBox cbSubject = new JComboBox();
+//subject DB 연동 
+		JComboBox cbSubject = new JComboBox(DataBase.getSubjectName());
 		cbSubject.setBounds(104, 112, 200, 27);
 		contentPane.add(cbSubject);
-		
+/*		
 		JCheckBox checkCompleted = new JCheckBox();
 		checkCompleted.setHorizontalAlignment(SwingConstants.LEFT);
 		checkCompleted.setBounds(417, 116, 128, 23);
 		contentPane.add(checkCompleted);
-		
+*/		
 		JLabel lblImportance = new JLabel("Importance");
 		lblImportance.setBounds(331, 88, 96, 16);
 		contentPane.add(lblImportance);
@@ -124,20 +121,28 @@ public class TodoAdd extends JFrame {
 		cbDeadlineHour.setBounds(162, 157, 65, 27);
 		contentPane.add(cbDeadlineHour);
 		
-		JComboBox cbDueDateHour = new JComboBox(DataBase.Hour);
-		cbDueDateHour.setMaximumRowCount(59);
-		cbDueDateHour.setBounds(438, 157, 52, 27);
-		contentPane.add(cbDueDateHour);
-		
 		JComboBox cbDeadlineMinute = new JComboBox(DataBase.Minute);
 		cbDeadlineMinute.setMaximumRowCount(59);
 		cbDeadlineMinute.setBounds(231, 157, 70, 27);
 		contentPane.add(cbDeadlineMinute);
 		
+		JCalendar JCalendarDeadline = new JCalendar();
+		JCalendarDeadline.setWeekOfYearVisible(false);
+		JCalendarDeadline.setNullDateButtonText("");
+		JCalendarDeadline.setDecorationBordersVisible(true);
+		JCalendarDeadline.setBounds(20, 189, 325, 229);
+		contentPane.add(JCalendarDeadline);
+		
+/*		
 		JComboBox cbDueDateMinute = new JComboBox(DataBase.Minute);
 		cbDueDateMinute.setMaximumRowCount(12);
 		cbDueDateMinute.setBounds(523, 157, 52, 27);
 		contentPane.add(cbDueDateMinute);
+		
+		JComboBox cbDueDateHour = new JComboBox(DataBase.Hour);
+		cbDueDateHour.setMaximumRowCount(59);
+		cbDueDateHour.setBounds(438, 157, 52, 27);
+		contentPane.add(cbDueDateHour);
 		
 		JCalendar JCalendarDueDate = new JCalendar();
 		JCalendarDueDate.setWeekOfYearVisible(false);
@@ -145,8 +150,6 @@ public class TodoAdd extends JFrame {
 		JCalendarDueDate.setDecorationBordersVisible(true);
 		JCalendarDueDate.setBounds(375, 190, 325, 229);
 		contentPane.add(JCalendarDueDate);
-		
-		
 		
 		JButton btnAmPmDueDate = new JButton("AM");
 		btnAmPmDueDate.addActionListener(new ActionListener() {
@@ -161,39 +164,37 @@ public class TodoAdd extends JFrame {
 		btnAmPmDueDate.setBounds(393, 156, 45, 29);
 		contentPane.add(btnAmPmDueDate);
 		
-		JCalendar JCalendarDeadline = new JCalendar();
-		JCalendarDeadline.setWeekOfYearVisible(false);
-		JCalendarDeadline.setNullDateButtonText("");
-		JCalendarDeadline.setDecorationBordersVisible(true);
-		JCalendarDeadline.setBounds(20, 189, 325, 229);
-		contentPane.add(JCalendarDeadline);
-		
+		JLabel lblNewLabel_1 = new JLabel("Due Date");
+		lblNewLabel_1.setBounds(331, 161, 61, 16);
+		contentPane.add(lblNewLabel_1);
+*/		
 		    
-//Add버  
+//Add  
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 		
 			String Todo=txtTodo.getText();
 			String Subject=(String) cbSubject.getSelectedItem();
-			boolean Completed=checkCompleted.isSelected();
+			//boolean Completed=checkCompleted.isSelected();				//in act of adding, 'Completed' is not needed
+			boolean Completed=false;
 		    boolean Importance=checkImportance.isSelected();
 		    
-        	Calendar CalendarDeadline=Calendar.getInstance();					//날짜,시간정보 저장을 위한 캘린더 생성 
-			CalendarDeadline.setTime(JCalendarDeadline.getDate());				//getDate()메소드 사용, 입력정보 저장 
+        	Calendar CalendarDeadline=Calendar.getInstance();					//Using Calendar, store yyyy.MM.DD.hh.mm 
+			CalendarDeadline.setTime(JCalendarDeadline.getDate());				//getDate() to which date is selected in JCalendar
 			Calendar CalendarDueDate=Calendar.getInstance();
-			CalendarDueDate.setTime(JCalendarDueDate.getDate());
-// HOUR, MINUTE은 콤보박스로 받아오기 때문에 따로 set해줘야 함.			
+			//CalendarDueDate.setTime(JCalendarDueDate.getDate());
+// HOUR, MINUTE are selected from JCombox that returns STRING. Store hour and minute in Calendar with date value			
 			CalendarDeadline.set(Calendar.HOUR, Integer.parseInt((String) cbDeadlineHour.getSelectedItem()));   
 			CalendarDeadline.set(Calendar.MINUTE, Integer.parseInt((String) cbDeadlineMinute.getSelectedItem()));
-			CalendarDueDate.set(Calendar.HOUR, Integer.parseInt((String)cbDueDateHour.getSelectedItem()));
-			CalendarDueDate.set(Calendar.MINUTE, Integer.parseInt((String)cbDueDateMinute.getSelectedItem()));
+			//CalendarDueDate.set(Calendar.HOUR, Integer.parseInt((String)cbDueDateHour.getSelectedItem()));
+			//CalendarDueDate.set(Calendar.MINUTE, Integer.parseInt((String)cbDueDateMinute.getSelectedItem()));
 //AM_PM설정 			
-			TodoAdd.AM_PM(CalendarDueDate, btnAmPmDueDate);
+			//TodoAdd.AM_PM(CalendarDueDate, btnAmPmDueDate);
 			TodoAdd.AM_PM(CalendarDeadline, btnAmPmDeadline);
 		
 		    
-// 등록단계 
+//Update DataBase and table 
 			TodoElement=new TodoElement();
 			TodoElement.setTodoElement(Todo, Subject, CalendarDeadline, CalendarDueDate, Completed, Importance);
 			DataBase.TodoAdd(TodoElement);
