@@ -1,6 +1,7 @@
 package se.smu;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -99,6 +100,17 @@ public class TodoManage extends JFrame {
 	    scrollPane = new JScrollPane();
 		scrollPane.setBounds(28, 12, 786, 379);
 		contentPane.add(scrollPane);
+//reset sort		
+		JButton btnResetSort = new JButton("reset sort");
+		
+		btnResetSort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				thisTodoManage.UpdateTable();
+			}
+		});
+		btnResetSort.setForeground(Color.BLACK);
+		btnResetSort.setBounds(814, 8, 117, 29);
+		contentPane.add(btnResetSort);
 	
 		thisTodoManage.UpdateTable();						// Create initial table 
 
