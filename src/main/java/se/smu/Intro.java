@@ -26,16 +26,16 @@ public class Intro extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Subject Manage");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnSubjectManage = new JButton("Subject Manage");
+		btnSubjectManage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisIntro.setVisible(false);
 				subjectmanage1 = new SubjectManage(thisIntro);
 				subjectmanage1.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(47, 106, 139, 56);
-		contentPane.add(btnNewButton);
+		btnSubjectManage.setBounds(47, 106, 139, 56);
+		contentPane.add(btnSubjectManage);
 		
 		JButton btnTo = new JButton("To do List");
 		btnTo.addActionListener(new ActionListener() {

@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 
 public class SubjectAdd extends JFrame {
 	
-	private DataBase DB;
+	private DataBase database;
 	
 	private JPanel contentPane;
 	private SubjectManage subjectmanageclass;
@@ -38,7 +38,7 @@ public class SubjectAdd extends JFrame {
 	JButton btnSUN;
 
 	public SubjectAdd(SubjectManage subjectmanage_parm) {
-		DB = DataBase.getDataBase();
+		database = DataBase.getDataBase();
 		
 		setTitle("Add");
 		subjectmanageclass = subjectmanage_parm;
@@ -96,31 +96,31 @@ public class SubjectAdd extends JFrame {
 		contentPane.add(txtSubject);
 		txtSubject.setColumns(10);
 		
-		JComboBox cbStartHour = new JComboBox(DB.Hour);
+		JComboBox cbStartHour = new JComboBox(database.Hour);
 		cbStartHour.setBounds(437, 45, 49, 24);
 		contentPane.add(cbStartHour);
 		
-		JComboBox cbStartMinute = new JComboBox(DB.Minute);
+		JComboBox cbStartMinute = new JComboBox(database.Minute);
 		cbStartMinute.setBounds(500, 45, 49, 24);
 		contentPane.add(cbStartMinute);
 		
-		JComboBox cbStartAm = new JComboBox(DB.Am);
+		JComboBox cbStartAm = new JComboBox(database.Am);
 		cbStartAm.setBounds(374, 45, 49, 24);
 		contentPane.add(cbStartAm);
 		
-		JComboBox cbEndHour = new JComboBox(DB.Hour);
+		JComboBox cbEndHour = new JComboBox(database.Hour);
 		cbEndHour.setBounds(437, 142, 49, 24);
 		contentPane.add(cbEndHour);
 		
-		JComboBox cbEndMinute = new JComboBox(DB.Minute);
+		JComboBox cbEndMinute = new JComboBox(database.Minute);
 		cbEndMinute.setBounds(500, 142, 49, 24);
 		contentPane.add(cbEndMinute);
 		
-		JComboBox cbEndAm = new JComboBox(DB.Am);
+		JComboBox cbEndAm = new JComboBox(database.Am);
 		cbEndAm.setBounds(374, 142, 49, 24);
 		contentPane.add(cbEndAm);
 		
-		JComboBox cbSemester = new JComboBox(DB.Semester);
+		JComboBox cbSemester = new JComboBox(database.Semester);
 		cbSemester.setBounds(215, 252, 49, 24);
 		contentPane.add(cbSemester);
 		
@@ -240,7 +240,7 @@ public class SubjectAdd extends JFrame {
 						endHour, endMinute, ycYear.getValue(), semester);    //subject 구조체(?)에 내용 저장
 				
 				//DB의 Subject벡터에 꼬리 달기
-				DB.SubjectAdd(addSubject);
+				database.SubjectAdd(addSubject);
 				//SubjectManage의 화면 테이블에 내용 add
 				subjectmanage_parm.SubjectTable();	
 				subjectmanage_parm.setVisible(true);

@@ -20,7 +20,7 @@ import com.toedter.calendar.JYearChooser;
 
 public class SubjectChange extends JFrame {
 	
-	private DataBase DB;
+	private DataBase database;
 	
 	private JPanel contentPane;
 	private SubjectManage subjectmanageclass;
@@ -33,8 +33,8 @@ public class SubjectChange extends JFrame {
 
 
 	public SubjectChange(SubjectManage subjectmanage_parm, int selectedRow) {
-		DB = DataBase.getDataBase();
-		SubjectElement selectedSubject = DB.getSelectedSubject(selectedRow);
+		database = DataBase.getDataBase();
+		SubjectElement selectedSubject = database.getSelectedSubject(selectedRow);
 		
 		setTitle("Change");
 		subjectmanageclass = subjectmanage_parm;
@@ -91,27 +91,27 @@ public class SubjectChange extends JFrame {
 		contentPane.add(txtProf);
 		txtProf.setColumns(10);
 		
-		JComboBox cbStartHour = new JComboBox(DB.Hour);
+		JComboBox cbStartHour = new JComboBox(database.Hour);
 		cbStartHour.setBounds(437, 45, 49, 24);
 		contentPane.add(cbStartHour);
 		
-		JComboBox cbStartMinute = new JComboBox(DB.Minute);
+		JComboBox cbStartMinute = new JComboBox(database.Minute);
 		cbStartMinute.setBounds(495, 45, 49, 24);
 		contentPane.add(cbStartMinute);
 		
-		JComboBox cbEndHour = new JComboBox(DB.Hour);
+		JComboBox cbEndHour = new JComboBox(database.Hour);
 		cbEndHour.setBounds(437, 142, 49, 24);
 		contentPane.add(cbEndHour);
 		
-		JComboBox cbEndMinute = new JComboBox(DB.Minute);
+		JComboBox cbEndMinute = new JComboBox(database.Minute);
 		cbEndMinute.setBounds(495, 142, 49, 24);
 		contentPane.add(cbEndMinute);
 		
-		JComboBox cbStartAm = new JComboBox(DB.Am);
+		JComboBox cbStartAm = new JComboBox(database.Am);
 		cbStartAm.setBounds(374, 45, 49, 24);
 		contentPane.add(cbStartAm);
 		
-		JComboBox cbEndAm = new JComboBox(DB.Am);
+		JComboBox cbEndAm = new JComboBox(database.Am);
 		cbEndAm.setBounds(374, 142, 49, 24);
 		contentPane.add(cbEndAm);
 		
@@ -119,7 +119,7 @@ public class SubjectChange extends JFrame {
 		ycYear.setBounds(133, 255, 79, 24);
 		contentPane.add(ycYear);
 		
-		JComboBox cbSemester = new JComboBox(DB.Semester);
+		JComboBox cbSemester = new JComboBox(database.Semester);
 		cbSemester.setBounds(215, 255, 45, 24);
 		contentPane.add(cbSemester);
 		
@@ -248,8 +248,8 @@ public class SubjectChange extends JFrame {
 							endHour, endMinute, ycYear.getValue(), semester);    //subject에 내용 저장
 					
 					//SubjectManage의 화면 테이블에 내용 add
-					DB.getSelectedSubject(selectedRow);
-					DB.SubjectChange(addSubject, selectedRow);	
+					database.getSelectedSubject(selectedRow);
+					database.SubjectChange(addSubject, selectedRow);	
 					subjectmanage_parm.SubjectTable();	
 					subjectmanage_parm.setVisible(true);
 					thisSubjectChange.dispose();

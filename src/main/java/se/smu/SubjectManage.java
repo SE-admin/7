@@ -22,7 +22,7 @@ public class SubjectManage extends JFrame {
 	
 	private SubjectManage thisSubjectManage = this;
 	
-	private DataBase DB;
+	private DataBase database;
 	
 	private JTable table;
 	private DefaultTableModel TableModel;
@@ -30,7 +30,7 @@ public class SubjectManage extends JFrame {
 	
 	public void SubjectTable(){
 		String[] SubjectColumnNames={"Subject", "Prof", "Year/Semester", "Day", "Start", "End"};
-		TableModel = new DefaultTableModel(DB.MatrixSubject(), SubjectColumnNames);
+		TableModel = new DefaultTableModel(database.MatrixSubject(), database.SubjectColumnNames);
 		table = new JTable(TableModel);
 		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -48,7 +48,7 @@ public class SubjectManage extends JFrame {
 
 
 	public SubjectManage(Intro introclass_parm) {
-		DB = DataBase.getDataBase();
+		database = DataBase.getDataBase();
 		
 		setTitle("SubjectManage");
 		introclass = introclass_parm;
@@ -86,9 +86,9 @@ public class SubjectManage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			
 				int selectedRow=table.convertRowIndexToModel(table.getSelectedRow());
-				SubjectElement selectedSubject = DB.getSelectedSubject(selectedRow);	//load selected Todo element on each field
-				DB.getSelectedSubject(selectedRow);
-				DB.SubjectDelete(selectedSubject, selectedRow);
+				SubjectElement selectedSubject = database.getSelectedSubject(selectedRow);	//load selected Todo element on each field
+				database.getSelectedSubject(selectedRow);
+				database.SubjectDelete(selectedSubject, selectedRow);
 				
 				thisSubjectManage.SubjectTable();
 			}
