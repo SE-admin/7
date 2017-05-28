@@ -25,7 +25,7 @@ public class DataBase {
 		public final String[] Semester = {"1", "2"};  //Subject영역에서 사용
 
 		
-		Vector<SubjectElement> vectorSubject = new Vector<SubjectElement>();
+		Vector<SubjectElement> SubjectElement = new Vector<SubjectElement>();
 		Vector<TodoElement> TodoElement = new Vector <TodoElement>();
 		
 		public static DataBase getDataBase() {
@@ -39,28 +39,28 @@ public class DataBase {
 // "name","prof", "selectday", "starthour", "startminute", "endhour", endminute", "year", "semester"
 //subject등록 add
 		public void SubjectAdd(SubjectElement in){
-			vectorSubject.add(in);
+			SubjectElement.add(in);
 		}
 		
 		public void SubjectChange(SubjectElement Element, int selectedRow){
-			vectorSubject.set(selectedRow, Element);								
+			SubjectElement.set(selectedRow, Element);								
 		}
 		
 		public SubjectElement getSelectedSubject(int selectedRow){
-			SubjectElement selectedSubject = vectorSubject.get(selectedRow);		
+			SubjectElement selectedSubject = SubjectElement.get(selectedRow);		
 			return selectedSubject;
 		}
 		
 		public void SubjectDelete(SubjectElement Element, int selectedRow){
-			vectorSubject.remove(selectedRow);								
+			SubjectElement.remove(selectedRow);								
 		}
 		
 		public String[][] MatrixSubject(){  
 
-			String subjectmatrix[][] = new String[vectorSubject.size()][6];    //이중 배열 선언: int[][] table = new int[5][10];
-			for(int i = 0 ; i < vectorSubject.size() ; i++){
+			String subjectmatrix[][] = new String[SubjectElement.size()][6];    //이중 배열 선언: int[][] table = new int[5][10];
+			for(int i = 0 ; i < SubjectElement.size() ; i++){
 				//	(Vector에서) Object elementAt(int index): index 위치의 객체를 반환한다.
-				SubjectElement in = vectorSubject.elementAt(i); //index = i인 위치의 객체 반환
+				SubjectElement in = SubjectElement.elementAt(i); //index = i인 위치의 객체 반환
 				subjectmatrix[i][0] = in.name;
 				subjectmatrix[i][1] = in.prof;
 				subjectmatrix[i][2] = in.year + "/" + in.semester;
@@ -72,9 +72,9 @@ public class DataBase {
 		}
 		
 		public String[] getSubjectName(){
-			String SubjectName[] = new String[vectorSubject.size()];
-			for(int i=0; i<vectorSubject.size(); i++){
-				SubjectElement s = vectorSubject.elementAt(i);
+			String SubjectName[] = new String[SubjectElement.size()];
+			for(int i=0; i<SubjectElement.size(); i++){
+				SubjectElement s = SubjectElement.elementAt(i);
 				SubjectName[i] = s.name;
 			}
 			return SubjectName;
