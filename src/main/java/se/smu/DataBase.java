@@ -38,8 +38,8 @@ public class DataBase {
 
 // "name","prof", "selectday", "starthour", "startminute", "endhour", endminute", "year", "semester"
 //subject등록 add
-		public void SubjectAdd(SubjectElement in){
-			SubjectElement.add(in);
+		public void SubjectAdd(SubjectElement Element){
+			SubjectElement.add(Element);
 		}
 		
 		public void SubjectChange(SubjectElement Element, int selectedRow){
