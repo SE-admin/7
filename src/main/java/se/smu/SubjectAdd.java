@@ -44,7 +44,7 @@ public class SubjectAdd extends JFrame {
 		subjectmanageclass = subjectmanage_parm;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 740, 500);
+		setBounds(100, 100, 743, 365);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -59,7 +59,7 @@ public class SubjectAdd extends JFrame {
 				thisSubjectAdd.dispose();
 			}
 		});
-		btnBack.setBounds(595, 135, 105, 45);
+		btnBack.setBounds(595, 98, 105, 45);
 		contentPane.add(btnBack);
 		
 		JLabel lblSubject = new JLabel("Subject");
@@ -67,32 +67,32 @@ public class SubjectAdd extends JFrame {
 		contentPane.add(lblSubject);
 		
 		JLabel lblProf = new JLabel("Prof");
-		lblProf.setBounds(30, 148, 89, 18);
+		lblProf.setBounds(30, 111, 89, 18);
 		contentPane.add(lblProf);
 		
 		JLabel lblYearsemester = new JLabel("Year/Semester");
-		lblYearsemester.setBounds(14, 255, 105, 18);
+		lblYearsemester.setBounds(30, 172, 133, 18);
 		contentPane.add(lblYearsemester);
 		
 		JLabel lblDay = new JLabel("Day");
-		lblDay.setBounds(30, 354, 62, 18);
+		lblDay.setBounds(30, 230, 62, 18);
 		contentPane.add(lblDay);
 		
 		JLabel lblStart = new JLabel("Start");
-		lblStart.setBounds(332, 51, 34, 18);
+		lblStart.setBounds(317, 51, 49, 18);
 		contentPane.add(lblStart);
 		
 		JLabel lblEnd = new JLabel("End");
-		lblEnd.setBounds(332, 148, 34, 18);
+		lblEnd.setBounds(317, 111, 49, 18);
 		contentPane.add(lblEnd);
 		
 		txtProf = new JTextField();
-		txtProf.setBounds(133, 142, 116, 24);
+		txtProf.setBounds(133, 105, 147, 24);
 		contentPane.add(txtProf);
 		txtProf.setColumns(10);
 		
 		txtSubject = new JTextField();
-		txtSubject.setBounds(133, 45, 116, 24);
+		txtSubject.setBounds(133, 45, 147, 24);
 		contentPane.add(txtSubject);
 		txtSubject.setColumns(10);
 		
@@ -109,23 +109,23 @@ public class SubjectAdd extends JFrame {
 		contentPane.add(cbStartAm);
 		
 		JComboBox cbEndHour = new JComboBox(database.Hour);
-		cbEndHour.setBounds(437, 142, 49, 24);
+		cbEndHour.setBounds(437, 105, 49, 24);
 		contentPane.add(cbEndHour);
 		
 		JComboBox cbEndMinute = new JComboBox(database.Minute);
-		cbEndMinute.setBounds(500, 142, 49, 24);
+		cbEndMinute.setBounds(500, 105, 49, 24);
 		contentPane.add(cbEndMinute);
 		
 		JComboBox cbEndAm = new JComboBox(database.Am);
-		cbEndAm.setBounds(374, 142, 49, 24);
+		cbEndAm.setBounds(374, 105, 49, 24);
 		contentPane.add(cbEndAm);
 		
 		JComboBox cbSemester = new JComboBox(database.Semester);
-		cbSemester.setBounds(215, 252, 49, 24);
+		cbSemester.setBounds(287, 169, 49, 24);
 		contentPane.add(cbSemester);
 		
 		JYearChooser ycYear = new JYearChooser();
-		ycYear.setBounds(133, 252, 79, 24);
+		ycYear.setBounds(205, 169, 79, 24);
 		contentPane.add(ycYear);
 		
 		/*
@@ -133,31 +133,31 @@ public class SubjectAdd extends JFrame {
 		 */
 		
 		JButton btnMon = new JButton("MON");
-		btnMon.setBounds(133, 350, 65, 45);
+		btnMon.setBounds(133, 226, 73, 45);
 		contentPane.add(btnMon);
 		
 		JButton btnTue = new JButton("TUE");
-		btnTue.setBounds(215, 350, 65, 45);
+		btnTue.setBounds(215, 226, 73, 45);
 		contentPane.add(btnTue);
 		
 		JButton btnWed = new JButton("WED");
-		btnWed.setBounds(294, 350, 65, 45);
+		btnWed.setBounds(294, 226, 73, 45);
 		contentPane.add(btnWed);
 		
 		JButton btnThu = new JButton("THU");
-		btnThu.setBounds(374, 350, 65, 45);
+		btnThu.setBounds(374, 226, 73, 45);
 		contentPane.add(btnThu);
 		
 		JButton btnFri = new JButton("FRI");
-		btnFri.setBounds(453, 350, 65, 45);
+		btnFri.setBounds(453, 226, 73, 45);
 		contentPane.add(btnFri);
 		
 		JButton btnSat = new JButton("SAT");
-		btnSat.setBounds(532, 350, 65, 45);
+		btnSat.setBounds(532, 226, 73, 45);
 		contentPane.add(btnSat);
 		
 		JButton btnSun = new JButton("SUN");
-		btnSun.setBounds(609, 350, 65, 45);
+		btnSun.setBounds(609, 226, 73, 45);
 		contentPane.add(btnSun);
 			
 		 class SelectDay extends MouseAdapter {
