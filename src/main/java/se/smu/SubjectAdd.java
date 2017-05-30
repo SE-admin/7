@@ -44,7 +44,7 @@ public class SubjectAdd extends JFrame {
 		subjectmanageclass = subjectmanage_parm;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 743, 365);
+		setBounds(100, 100, 743, 366);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -75,7 +75,7 @@ public class SubjectAdd extends JFrame {
 		contentPane.add(lblYearsemester);
 		
 		JLabel lblDay = new JLabel("Day");
-		lblDay.setBounds(30, 230, 62, 18);
+		lblDay.setBounds(30, 239, 62, 18);
 		contentPane.add(lblDay);
 		
 		JLabel lblStart = new JLabel("Start");
@@ -101,11 +101,11 @@ public class SubjectAdd extends JFrame {
 		contentPane.add(cbStartHour);
 		
 		JComboBox cbStartMinute = new JComboBox(database.Minute);
-		cbStartMinute.setBounds(500, 45, 49, 24);
+		cbStartMinute.setBounds(495, 45, 49, 24);
 		contentPane.add(cbStartMinute);
 		
 		JComboBox cbStartAm = new JComboBox(database.Am);
-		cbStartAm.setBounds(374, 45, 49, 24);
+		cbStartAm.setBounds(374, 45, 51, 24);
 		contentPane.add(cbStartAm);
 		
 		JComboBox cbEndHour = new JComboBox(database.Hour);
@@ -113,15 +113,15 @@ public class SubjectAdd extends JFrame {
 		contentPane.add(cbEndHour);
 		
 		JComboBox cbEndMinute = new JComboBox(database.Minute);
-		cbEndMinute.setBounds(500, 105, 49, 24);
+		cbEndMinute.setBounds(495, 105, 49, 24);
 		contentPane.add(cbEndMinute);
 		
 		JComboBox cbEndAm = new JComboBox(database.Am);
-		cbEndAm.setBounds(374, 105, 49, 24);
+		cbEndAm.setBounds(374, 105, 51, 24);
 		contentPane.add(cbEndAm);
 		
 		JComboBox cbSemester = new JComboBox(database.Semester);
-		cbSemester.setBounds(287, 169, 49, 24);
+		cbSemester.setBounds(287, 169, 42, 24);
 		contentPane.add(cbSemester);
 		
 		JYearChooser ycYear = new JYearChooser();
@@ -141,23 +141,23 @@ public class SubjectAdd extends JFrame {
 		contentPane.add(btnTue);
 		
 		JButton btnWed = new JButton("WED");
-		btnWed.setBounds(294, 226, 73, 45);
+		btnWed.setBounds(297, 226, 73, 45);
 		contentPane.add(btnWed);
 		
 		JButton btnThu = new JButton("THU");
-		btnThu.setBounds(374, 226, 73, 45);
+		btnThu.setBounds(379, 226, 73, 45);
 		contentPane.add(btnThu);
 		
 		JButton btnFri = new JButton("FRI");
-		btnFri.setBounds(453, 226, 73, 45);
+		btnFri.setBounds(461, 226, 73, 45);
 		contentPane.add(btnFri);
 		
 		JButton btnSat = new JButton("SAT");
-		btnSat.setBounds(532, 226, 73, 45);
+		btnSat.setBounds(543, 226, 73, 45);
 		contentPane.add(btnSat);
 		
 		JButton btnSun = new JButton("SUN");
-		btnSun.setBounds(609, 226, 73, 45);
+		btnSun.setBounds(625, 226, 73, 45);
 		contentPane.add(btnSun);
 			
 		 class SelectDay extends MouseAdapter {
