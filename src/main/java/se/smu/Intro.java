@@ -34,7 +34,7 @@ public class Intro extends JFrame {
 				subjectmanage1.setVisible(true);
 			}
 		});
-		btnSubjectManage.setBounds(47, 106, 139, 56);
+		btnSubjectManage.setBounds(68, 106, 139, 56);
 		contentPane.add(btnSubjectManage);
 		
 		JButton btnTo = new JButton("To do List");
