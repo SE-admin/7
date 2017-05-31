@@ -20,7 +20,7 @@ public class Intro extends JFrame {
 	public Intro() {
 		setTitle("Intro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 528, 300);
+		setBounds(100, 100, 533, 314);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -34,7 +34,7 @@ public class Intro extends JFrame {
 				subjectmanage1.setVisible(true);
 			}
 		});
-		btnSubjectManage.setBounds(68, 106, 139, 56);
+		btnSubjectManage.setBounds(68, 106, 168, 56);
 		contentPane.add(btnSubjectManage);
 		
 		JButton btnTo = new JButton("To do List");
@@ -45,7 +45,7 @@ public class Intro extends JFrame {
 				todomanage1.setVisible(true);
 			}
 		});
-		btnTo.setBounds(322, 106, 139, 56);
+		btnTo.setBounds(270, 106, 168, 56);
 		contentPane.add(btnTo);
 	}
 }
