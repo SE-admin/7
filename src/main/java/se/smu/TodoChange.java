@@ -30,7 +30,7 @@ public class TodoChange extends JFrame {
 		TodoElement selectedTodoElement = DataBase.getSelectedTodoElement(selectedRow);	//load selected Todo element on each field
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 744, 454);
+		setBounds(100, 100, 751, 483);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -38,27 +38,27 @@ public class TodoChange extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel label = new JLabel("Compeleted");
-		label.setBounds(330, 109, 96, 16);
+		label.setBounds(387, 146, 110, 18);
 		contentPane.add(label);
 		
 		JLabel lblTodo = new JLabel("To do");
-		lblTodo.setBounds(24, 66, 61, 16);
+		lblTodo.setBounds(32, 26, 89, 18);
 		contentPane.add(lblTodo);
 		
 		JLabel lblSubject = new JLabel("Subject");
-		lblSubject.setBounds(24, 109, 61, 16);
+		lblSubject.setBounds(32, 66, 89, 18);
 		contentPane.add(lblSubject);
 		
 		JLabel lblDeadline = new JLabel("Deadline");
-		lblDeadline.setBounds(29, 161, 61, 16);
+		lblDeadline.setBounds(32, 106, 79, 16);
 		contentPane.add(lblDeadline);
 		
 		JLabel lblimportance = new JLabel("Importance");
-		lblimportance.setBounds(293, 87, 96, 16);
+		lblimportance.setBounds(387, 106, 110, 18);
 		contentPane.add(lblimportance);
 		
 		JLabel lblDueDate = new JLabel("Due Date");
-		lblDueDate.setBounds(310, 161, 61, 16);
+		lblDueDate.setBounds(32, 143, 89, 16);
 		contentPane.add(lblDueDate);
 		
 		
@@ -74,7 +74,7 @@ public class TodoChange extends JFrame {
 					btnAmPmDueDate.setText("AM");
 			}
 		});
-		btnAmPmDueDate.setBounds(367, 156, 59, 29);
+		btnAmPmDueDate.setBounds(132, 143, 59, 25);
 		contentPane.add(btnAmPmDueDate);
 		
 	
@@ -90,7 +90,7 @@ public class TodoChange extends JFrame {
 					btnAmPmDeadline.setText("AM");
 			}
 		});
-		btnAmPmDeadline.setBounds(90, 156, 59, 29);
+		btnAmPmDeadline.setBounds(132, 106, 59, 25);
 		contentPane.add(btnAmPmDeadline);
 		
 		JButton btnBack = new JButton("Back");
@@ -100,68 +100,68 @@ public class TodoChange extends JFrame {
 				thisTodoChange.dispose();
 			}
 		});
-		btnBack.setBounds(599, 157, 105, 27);
+		btnBack.setBounds(573, 75, 105, 45);
 		contentPane.add(btnBack);
 		
 		JTextField txtTodo = new JTextField(selectedTodoElement.Todo);
 		txtTodo.setColumns(10);
-		txtTodo.setBounds(65, 61, 441, 26);
+		txtTodo.setBounds(135, 20, 418, 24);
 		contentPane.add(txtTodo);
 		
 //TODO subject연동 
 		JComboBox cbSubject = new JComboBox();
-		cbSubject.setBounds(81, 102, 200, 27);
+		cbSubject.setBounds(135, 59, 200, 24);
 		contentPane.add(cbSubject);
 		
 		JCheckBox checkImportance = new JCheckBox("");
 		checkImportance.setSelected(selectedTodoElement.Importance); 									//load Importance
-		checkImportance.setBounds(401, 83, 128, 23);
+		checkImportance.setBounds(486, 106, 29, 23);
 		contentPane.add(checkImportance);
 		
 		
 		JCheckBox checkCompleted = new JCheckBox("");
 		checkCompleted.setSelected(selectedTodoElement.Completed); 									// load Completed
 		checkCompleted.setHorizontalAlignment(SwingConstants.LEFT);
-		checkCompleted.setBounds(412, 102, 128, 23);
+		checkCompleted.setBounds(486, 146, 29, 23);
 		contentPane.add(checkCompleted);
 		
 		JComboBox cbDeadlineHour = new JComboBox(DataBase.Hour);
 		cbDeadlineHour.setSelectedIndex(selectedTodoElement.Deadline.get(Calendar.HOUR)-1);							// Load hour indx접근이기떄문에 0부터..~> -1해준다.
 		cbDeadlineHour.setMaximumRowCount(12);
-		cbDeadlineHour.setBounds(157, 157, 77, 27);
+		cbDeadlineHour.setBounds(194, 106, 59, 24);
 		contentPane.add(cbDeadlineHour);
 		
 		JComboBox cbDeadlineMinute = new JComboBox(DataBase.Minute);
 		cbDeadlineMinute.setSelectedIndex(selectedTodoElement.Deadline.get(Calendar.MINUTE));					  //
 		cbDeadlineMinute.setMaximumRowCount(59);
-		cbDeadlineMinute.setBounds(230, 157, 68, 27);
+		cbDeadlineMinute.setBounds(258, 106, 59, 24);
 		contentPane.add(cbDeadlineMinute);
 		
 		JComboBox cbDueDateHour = new JComboBox(DataBase.Hour);
 		cbDueDateHour.setSelectedIndex(selectedTodoElement.DueDate.get(Calendar.HOUR)-1);							//
 		cbDueDateHour.setMaximumRowCount(12);
-		cbDueDateHour.setBounds(423, 157, 83, 27);
+		cbDueDateHour.setBounds(194, 143, 59, 24);
 		contentPane.add(cbDueDateHour);
 		
 		
 		JComboBox cbDueDateMinute = new JComboBox(DataBase.Minute);
 		cbDueDateMinute.setSelectedIndex(selectedTodoElement.DueDate.get(Calendar.MINUTE));					//
 		cbDueDateMinute.setMaximumRowCount(12);
-		cbDueDateMinute.setBounds(507, 157, 98, 27);
+		cbDueDateMinute.setBounds(258, 143, 59, 24);
 		contentPane.add(cbDueDateMinute);
 
 		JCalendar JCalendarDueDate = new JCalendar();
 		JCalendarDueDate.setWeekOfYearVisible(false);
 		JCalendarDueDate.setNullDateButtonText("");
 		JCalendarDueDate.setDecorationBordersVisible(true);
-		JCalendarDueDate.setBounds(379, 196, 325, 229);
+		JCalendarDueDate.setBounds(387, 183, 325, 229);
 		contentPane.add(JCalendarDueDate);
 		
 		JCalendar JCalendarDeadline = new JCalendar();
 		JCalendarDeadline.setWeekOfYearVisible(false);
 		JCalendarDeadline.setNullDateButtonText("");
 		JCalendarDeadline.setDecorationBordersVisible(true);
-		JCalendarDeadline.setBounds(20, 196, 325, 229);
+		JCalendarDeadline.setBounds(17, 183, 325, 229);
 		contentPane.add(JCalendarDeadline);
 		
 
@@ -199,7 +199,7 @@ public class TodoChange extends JFrame {
 				thisTodoChange.dispose();
 			}
 		});
-		btnChange.setBounds(599, 62, 105, 27);
+		btnChange.setBounds(573, 15, 105, 45);
 		contentPane.add(btnChange);
 		
 		
