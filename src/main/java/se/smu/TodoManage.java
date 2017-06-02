@@ -45,13 +45,13 @@ public class TodoManage extends JFrame {
 		setTitle("TodoManage");
 		introclass = introclass_parm;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 952, 470);
+		setBounds(100, 100, 914, 471);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 //ADD 구현완료 	
 		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(826, 55, 105, 27);
+		btnAdd.setBounds(779, 100, 105, 45);
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TodoAdd todoadd1 = new TodoAdd(thisTodoManage);
@@ -62,7 +62,7 @@ public class TodoManage extends JFrame {
 		contentPane.add(btnAdd);
 //Change 구현완료 		
 		JButton btnNewButton = new JButton("Change");
-		btnNewButton.setBounds(826, 120, 105, 27);
+		btnNewButton.setBounds(779, 150, 105, 45);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = table.convertRowIndexToModel(table.getSelectedRow());					// jtable에는 view index, model index따로존재 mapping정보 알 수 있다. 
@@ -84,11 +84,11 @@ public class TodoManage extends JFrame {
 				thisTodoManage.UpdateTable();
 			}
 		});
-		btnNewButton_1.setBounds(826, 195, 105, 27);
+		btnNewButton_1.setBounds(779, 200, 105, 45);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(826, 342, 105, 27);
+		btnBack.setBounds(779, 250, 105, 45);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				introclass.setVisible(true);
@@ -98,7 +98,7 @@ public class TodoManage extends JFrame {
 		contentPane.add(btnBack);
 		
 	    scrollPane = new JScrollPane();
-		scrollPane.setBounds(28, 12, 786, 379);
+		scrollPane.setBounds(17, 15, 752, 387);
 		contentPane.add(scrollPane);
 //reset sort		
 		JButton btnResetSort = new JButton("reset sort");
@@ -109,7 +109,7 @@ public class TodoManage extends JFrame {
 			}
 		});
 		btnResetSort.setForeground(Color.BLACK);
-		btnResetSort.setBounds(814, 8, 117, 29);
+		btnResetSort.setBounds(779, 50, 105, 45);
 		contentPane.add(btnResetSort);
 	
 		thisTodoManage.UpdateTable();						// Create initial table 
