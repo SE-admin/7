@@ -46,7 +46,7 @@ public class TodoAdd extends JFrame {
 		DataBase = DataBase.getDataBase();					//Import Todo
 		todomanageclass = todomanage_parm;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 736, 479);
+		setBounds(100, 100, 723, 478);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -60,19 +60,19 @@ public class TodoAdd extends JFrame {
 				thisTodoAdd.dispose();
 			}
 		});
-		btnBack.setBounds(599, 157, 105, 27);
+		btnBack.setBounds(571, 100, 105, 45);
 		contentPane.add(btnBack);
 		
 		JLabel lblToDo = new JLabel("To do");
-		lblToDo.setBounds(45, 66, 61, 16);
+		lblToDo.setBounds(30, 51, 89, 18);
 		contentPane.add(lblToDo);
 		
 		JLabel lblSubject = new JLabel("Subject");
-		lblSubject.setBounds(45, 116, 61, 16);
+		lblSubject.setBounds(30, 111, 89, 18);
 		contentPane.add(lblSubject);
 		
 		JLabel lblDeadline = new JLabel("Deadline");
-		lblDeadline.setBounds(45, 161, 61, 16);
+		lblDeadline.setBounds(30, 171, 79, 16);
 		contentPane.add(lblDeadline);
 /*		
 		JLabel lbCompleted = new JLabel("Compeleted");
@@ -80,13 +80,13 @@ public class TodoAdd extends JFrame {
 		contentPane.add(lbCompleted);
 */				
 		txtTodo = new JTextField();
-		txtTodo.setBounds(104, 61, 441, 26);
+		txtTodo.setBounds(133, 45, 418, 24);
 		contentPane.add(txtTodo);
 		txtTodo.setColumns(10);
 		
 //subject DB 연동 
 		JComboBox cbSubject = new JComboBox(DataBase.getSubjectName());
-		cbSubject.setBounds(104, 112, 200, 27);
+		cbSubject.setBounds(133, 111, 200, 24);
 		contentPane.add(cbSubject);
 /*		
 		JCheckBox checkCompleted = new JCheckBox();
@@ -95,12 +95,12 @@ public class TodoAdd extends JFrame {
 		contentPane.add(checkCompleted);
 */		
 		JLabel lblImportance = new JLabel("Importance");
-		lblImportance.setBounds(331, 88, 96, 16);
+		lblImportance.setBounds(351, 111, 110, 18);
 		contentPane.add(lblImportance);
 		
 		JCheckBox checkImportance = new JCheckBox();
 		checkImportance.setHorizontalAlignment(SwingConstants.LEFT);
-		checkImportance.setBounds(417, 84, 128, 23);
+		checkImportance.setBounds(454, 111, 29, 24);
 		contentPane.add(checkImportance);
 		
 		JButton btnAmPmDeadline = new JButton("AM");
@@ -113,24 +113,24 @@ public class TodoAdd extends JFrame {
 					btnAmPmDeadline.setText("AM");
 			}
 		});
-		btnAmPmDeadline.setBounds(104, 156, 59, 29);
+		btnAmPmDeadline.setBounds(133, 171, 59, 24);
 		contentPane.add(btnAmPmDeadline);
 		
 		JComboBox cbDeadlineHour = new JComboBox(DataBase.Hour);
 		cbDeadlineHour.setMaximumRowCount(12);
-		cbDeadlineHour.setBounds(162, 157, 65, 27);
+		cbDeadlineHour.setBounds(195, 171, 59, 24);
 		contentPane.add(cbDeadlineHour);
 		
 		JComboBox cbDeadlineMinute = new JComboBox(DataBase.Minute);
 		cbDeadlineMinute.setMaximumRowCount(59);
-		cbDeadlineMinute.setBounds(231, 157, 70, 27);
+		cbDeadlineMinute.setBounds(259, 171, 59, 24);
 		contentPane.add(cbDeadlineMinute);
 		
 		JCalendar JCalendarDeadline = new JCalendar();
 		JCalendarDeadline.setWeekOfYearVisible(false);
 		JCalendarDeadline.setNullDateButtonText("");
 		JCalendarDeadline.setDecorationBordersVisible(true);
-		JCalendarDeadline.setBounds(20, 189, 325, 229);
+		JCalendarDeadline.setBounds(351, 171, 325, 229);
 		contentPane.add(JCalendarDeadline);
 		
 /*		
@@ -203,7 +203,7 @@ public class TodoAdd extends JFrame {
 			thisTodoAdd.dispose();
 			}
 		});
-		btnAdd.setBounds(599, 62, 105, 27);
+		btnAdd.setBounds(571, 40, 105, 45);
 		contentPane.add(btnAdd);
 		
 		
