@@ -65,7 +65,7 @@ public class SubjectChange extends JFrame {
 		contentPane.add(lblProf);
 		
 		JLabel lblYearsemester = new JLabel("Year/Semester");
-		lblYearsemester.setBounds(30, 172, 122, 21);
+		lblYearsemester.setBounds(30, 172, 133, 18);
 		contentPane.add(lblYearsemester);
 		
 		JLabel lblNewLabel_1 = new JLabel("Day");
@@ -116,11 +116,11 @@ public class SubjectChange extends JFrame {
 		contentPane.add(cbEndAm);
 		
 		JYearChooser ycYear = new JYearChooser();
-		ycYear.setBounds(240, 172, 79, 24);
+		ycYear.setBounds(205, 169, 79, 24);
 		contentPane.add(ycYear);
 		
 		JComboBox cbSemester = new JComboBox(database.Semester);
-		cbSemester.setBounds(322, 172, 45, 24);
+		cbSemester.setBounds(287, 169, 42, 24);
 		contentPane.add(cbSemester);
 		
 		/*
@@ -152,7 +152,7 @@ public class SubjectChange extends JFrame {
 		contentPane.add(btnSat);
 		
 		JButton btnSun = new JButton("SUN");
-		btnSun.setBounds(608, 226, 73, 45);
+		btnSun.setBounds(625, 226, 73, 45);
 		contentPane.add(btnSun);
 		
 		//생각
