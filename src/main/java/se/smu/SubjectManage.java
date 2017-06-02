@@ -59,7 +59,7 @@ public class SubjectManage extends JFrame {
 		setContentPane(contentPane);
 		
 		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(531, 33, 105, 39);
+		btnAdd.setBounds(545, 45, 105, 45);
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//thisSubjectManage.setVisible(false);
@@ -71,7 +71,7 @@ public class SubjectManage extends JFrame {
 		contentPane.add(btnAdd);
 		
 		JButton btnChange = new JButton("Change");
-		btnChange.setBounds(531, 116, 105, 39);
+		btnChange.setBounds(545, 125, 105, 45);
 		btnChange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedrow = table.convertRowIndexToModel(table.getSelectedRow());
@@ -93,11 +93,11 @@ public class SubjectManage extends JFrame {
 				thisSubjectManage.SubjectTable();
 			}
 		});
-		btnDelete.setBounds(531, 206, 105, 39);
+		btnDelete.setBounds(545, 205, 105, 45);
 		contentPane.add(btnDelete);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(531, 317, 105, 46);
+		btnBack.setBounds(545, 285, 105, 45);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				introclass.setVisible(true);
@@ -107,7 +107,7 @@ public class SubjectManage extends JFrame {
 		contentPane.add(btnBack);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(28, 12, 489, 379);
+		scrollPane.setBounds(10, 10, 518, 375);
 		contentPane.add(scrollPane);
 
 		this.SubjectTable();
