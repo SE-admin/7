@@ -201,7 +201,7 @@ public class SubjectElement {
 		    rs = stmt.executeQuery(sql2);
 		    rs.next();
 		    this.name = rs.getString("subject");
-		//		    stmt.executeUpdate(sql);
+		    stmt.executeUpdate(sql);
 		    for(int i=(j+1);i<=DBrow();i++){
 		    	String sql1 = "update subjectdb set rownum = ";
 		    	sql1 += "'"+String.valueOf(i)+"'"+ " Where rownum = "+ "'"+String.valueOf(i+1)+"'";

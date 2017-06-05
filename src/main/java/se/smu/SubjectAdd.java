@@ -241,7 +241,6 @@ public class SubjectAdd extends JFrame {
 						endHour, endMinute, ycYear.getValue(), semester);
 				addSubject.insertDB();
 				database.SubjectAdd(addSubject);
-
 				subjectmanage_parm.Subject_Table();	
 				subjectmanage_parm.setVisible(true);
 				thisSubjectAdd.dispose();
