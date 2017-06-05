@@ -22,7 +22,7 @@ public class TodoChange extends JFrame {
 	private JPanel contentPane;
 	private TodoChange thisTodoChange = this;
 	private TodoElement TodoElement;
-    private DataBase DataBase;
+    DataBase DataBase = new DataBase();
 	public TodoChange(TodoManage todomanage_parm,int selectedRow) {
 		
 		String loadedAmPm;																//variable for loading Am/Pm on each button
@@ -109,9 +109,10 @@ public class TodoChange extends JFrame {
 		contentPane.add(txtTodo);
 		
 //TODO subject연동 
-		JComboBox cbSubject = new JComboBox();
+		JComboBox cbSubject = new JComboBox(DataBase.getSubjectName());
 		cbSubject.setBounds(135, 59, 200, 24);
 		contentPane.add(cbSubject);
+	
 		
 		JCheckBox checkImportance = new JCheckBox("");
 		checkImportance.setSelected(selectedTodoElement.Importance); 									//load Importance
@@ -190,8 +191,8 @@ public class TodoChange extends JFrame {
 				TodoAdd.AM_PM(CalendarDeadline, btnAmPmDeadline);
 			
 				
-				TodoElement=new TodoElement();
-				TodoElement.setTodoElement(Todo, Subject, CalendarDeadline, CalendarDueDate, Completed, Importance);
+				TodoElement TodoElement = new TodoElement(Todo, Subject, CalendarDeadline, CalendarDueDate, Completed, Importance);
+				TodoElement.todochangeDB(selectedRow);
 				DataBase.getSelectedTodoElement(selectedRow);
 				DataBase.TodoChange(TodoElement, selectedRow);
 				todomanage_parm.UpdateTable();

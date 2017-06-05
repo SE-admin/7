@@ -248,9 +248,10 @@ public class SubjectChange extends JFrame {
 							endHour, endMinute, ycYear.getValue(), semester);    //subject에 내용 저장
 					
 					//SubjectManage의 화면 테이블에 내용 add
+					addSubject.changeDB(selectedRow);
 					database.getSelectedSubject(selectedRow);
 					database.SubjectChange(addSubject, selectedRow);	
-					subjectmanage_parm.SubjectTable();	
+					subjectmanage_parm.Subject_Table();	
 					subjectmanage_parm.setVisible(true);
 					thisSubjectChange.dispose();
 				}

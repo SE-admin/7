@@ -25,9 +25,10 @@ public class DataBase {
 		public final String[] Semester = {"1", "2"};  //Subject영역에서 사용
 
 		
-		Vector<SubjectElement> SubjectElement = new Vector<SubjectElement>();
-		Vector<TodoElement> TodoElement = new Vector <TodoElement>();
-		
+		public static Vector<SubjectElement> SubjectElement = new Vector<SubjectElement>();
+		public static Vector<TodoElement> TodoElement = new Vector <TodoElement>();
+		public static Vector<String> initsubject = new Vector <String>();
+		public static Vector<String> inittodo = new Vector <String>();
 		public static DataBase getDataBase() {
 			if(DataBase==null){
 				DataBase = new DataBase();
@@ -40,8 +41,9 @@ public class DataBase {
 //subject등록 add
 		public void SubjectAdd(SubjectElement Element){
 			SubjectElement.add(Element);
+			
 		}
-		
+	
 		public void SubjectChange(SubjectElement Element, int selectedRow){
 			SubjectElement.set(selectedRow, Element);								
 		}
@@ -56,19 +58,19 @@ public class DataBase {
 		}
 		
 		public String[][] MatrixSubject(){  
-
+			initsubject.removeAllElements();
 			String subjectmatrix[][] = new String[SubjectElement.size()][6];    //이중 배열 선언: int[][] table = new int[5][10];
 			for(int i = 0 ; i < SubjectElement.size() ; i++){
 				//	(Vector에서) Object elementAt(int index): index 위치의 객체를 반환한다.
 				SubjectElement in = SubjectElement.elementAt(i); //index = i인 위치의 객체 반환
-				subjectmatrix[i][0] = in.name;
-				subjectmatrix[i][1] = in.prof;
-				subjectmatrix[i][2] = in.year + "/" + in.semester;
-				subjectmatrix[i][3] = in.selectday;
-				subjectmatrix[i][4] = in.starthour + " : " + in.startminute;
-				subjectmatrix[i][5] = in.endhour + " : " + in.endminute;
-			}
-			return subjectmatrix;
+				this.initsubject.add(subjectmatrix[i][0] = in.name);
+				this.initsubject.add(subjectmatrix[i][1] = in.prof);
+				this.initsubject.add(subjectmatrix[i][2] = in.year + "/" + in.semester);
+				this.initsubject.add(subjectmatrix[i][3] = in.selectday);
+				this.initsubject.add(subjectmatrix[i][4] = in.starthour + " : " + in.startminute);
+				this.initsubject.add(subjectmatrix[i][5] = in.endhour + " : " + in.endminute); 
+			}	
+			return null;
 		}
 		
 		public String[] getSubjectName(){
@@ -79,6 +81,10 @@ public class DataBase {
 			}
 			return SubjectName;
 		}
+		
+
+		
+	
 		
 //"To do", "Subject", "Deadline", "Due date", "Completed", "Importance"		
 		public void TodoAdd(TodoElement Element){
@@ -104,23 +110,22 @@ public class DataBase {
 		public String[][] MatrixTodoElement(){
 			String [][] TodoMatrix= new String [TodoElement.size()][6];   //배열 선언 후 iterator를 통한 순차접근~> maxtrix채운다.
 			Iterator<TodoElement> iterator=TodoElement.iterator();
-			TodoElement element=new TodoElement();
-					
-			for(int i=0; iterator.hasNext();i++){
-				element=iterator.next();
-				TodoMatrix[i][0]=element.Todo;
-				TodoMatrix[i][1]=element.Subject;
-				SimpleDateFormat Dead_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a");     //Date출력 형식 지정 * 'a' is Am/pm marker
-				TodoMatrix[i][2]=Dead_sdf.format(element.Deadline.getTime());						//Convert Date to String
+			for(int i=0; i<TodoElement.size();i++){
+				TodoElement element = TodoElement.elementAt(i);
+				this.inittodo.add(TodoMatrix[i][0]=element.Todo);
+				this.inittodo.add(TodoMatrix[i][1]=element.Subject);
+				SimpleDateFormat Dead_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a"); //Date출력 형식 지정 * 'a' is Am/pm marker
+				this.inittodo.add(TodoMatrix[i][2]=Dead_sdf.format(element.Deadline.getTime()));						//Convert Date to String
 				SimpleDateFormat Due_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a"); 
-				TodoMatrix[i][3]=Due_sdf.format(element.DueDate.getTime());	
-				if (element.Completed==true) TodoMatrix[i][4]="O" ;
-				else TodoMatrix[i][4]="X";
-				if (element.Importance==true) TodoMatrix[i][5]="O" ;
-				else TodoMatrix[i][5]="X";	
+				this.inittodo.add(TodoMatrix[i][3]=Due_sdf.format(element.DueDate.getTime()));	
+				if (element.Completed == true) this.inittodo.add(TodoMatrix[i][4]="O") ;
+				else this.inittodo.add(TodoMatrix[i][4]="X");
+				if (element.Importance== true) this.inittodo.add(TodoMatrix[i][5]="O") ;
+				else this.inittodo.add(TodoMatrix[i][5]="X");	
 			}
-			return TodoMatrix;	
+			return null;	
 		}	
+		
 		
 		
 	

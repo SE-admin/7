@@ -30,9 +30,8 @@ public class TodoManage extends JFrame {
 	private JTable table;
 	private DefaultTableModel TableModel;
 	public JScrollPane scrollPane;	
-	
+	private TodoElement TE = new TodoElement(null, null, null, null, rootPaneCheckingEnabled, rootPaneCheckingEnabled);
 	private DataBase DataBase;
-	
 /* 
  * 	use UpdateTable() for initiating and updating table
  *  methods is specified down below the class
@@ -78,6 +77,7 @@ public class TodoManage extends JFrame {
 
 				int selectedRow=table.convertColumnIndexToModel(table.getSelectedRow());
 				TodoElement selectedTodoElement = DataBase.getSelectedTodoElement(selectedRow);	//load selected Todo element on each field
+				selectedTodoElement.tododeleteDB(selectedRow);
 				DataBase.getSelectedTodoElement(selectedRow);
 				DataBase.TodoDelete(selectedTodoElement, selectedRow);
 				
@@ -121,8 +121,17 @@ public class TodoManage extends JFrame {
 	public void UpdateTable(){   
 		table = new JTable();
 		TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
-		table.setModel(TableModel);																// set table model 
-			
+		table.setModel(TableModel);		// set table model 
+		table = new JTable(TableModel);
+		if(TE.todoDBrow() != 0){
+		for(int i=0; i<=DataBase.inittodo.size();i++){
+			TableModel.addRow(DataBase.inittodo.toArray());
+			for(int j =0 ; j<6; j++){
+				DataBase.inittodo.remove(0);
+				}
+			}
+		}
+		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.getColumnModel().getColumn(0).setPreferredWidth(150);
 		table.getColumnModel().getColumn(1).setPreferredWidth(96);
@@ -142,6 +151,41 @@ public class TodoManage extends JFrame {
 		RowSorter sorter = new TableRowSorter(TableModel);
 		table.setRowSorter(sorter);									 // sort table
 		}
+	
+//	public void Update_Table(){   
+//		table = new JTable();
+//		TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
+//		table.setModel(TableModel);		// set table model 
+//		table = new JTable(TableModel);
+//		for(int i=0;i<TableModel.getRowCount();i++)
+//		{
+//			TableModel.removeRow(0);
+//		}
+//		for(int i=0; i<=DataBase.inittodo.size();i++){
+//			TableModel.addRow(DataBase.inittodo.toArray());
+//			for(int j =0 ; j<6; j++){
+//				DataBase.inittodo.remove(0);}
+//			}
+//		
+//		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		table.getColumnModel().getColumn(0).setPreferredWidth(150);
+//		table.getColumnModel().getColumn(1).setPreferredWidth(96);
+//		table.getColumnModel().getColumn(2).setPreferredWidth(157);
+//		table.getColumnModel().getColumn(3).setPreferredWidth(157);
+//		table.getColumnModel().getColumn(4).setPreferredWidth(50);
+//		table.getColumnModel().getColumn(5).setPreferredWidth(50);
+//		table.setFillsViewportHeight(true);
+//		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+//		
+//		centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );				//center the 'Completed' and 'Importance' column
+//		table.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
+//		table.getColumnModel().getColumn(5).setCellRenderer( centerRenderer );	
+//
+////과목정렬, 마감기한, 실제 마감일 , 완료 여부 정렬 
+//		scrollPane.setViewportView(table);
+//		RowSorter sorter = new TableRowSorter(TableModel);
+//		table.setRowSorter(sorter);									 // sort table
+//		}
 	}			
 
 		

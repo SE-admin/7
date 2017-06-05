@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 
@@ -27,11 +29,22 @@ public class SubjectManage extends JFrame {
 	private JTable table;
 	private DefaultTableModel TableModel;
 	public JScrollPane scrollPane;	
-	
-	public void SubjectTable(){
+	private SubjectElement SE = new SubjectElement(null, null, null, 0, null, 0, null, 0, null);
+	Vector<SubjectElement> SV = new Vector<SubjectElement>();
+
+	public void Subject_Table(){
 		String[] SubjectColumnNames={"Subject", "Prof", "Year/Semester", "Day", "Start", "End"};
 		TableModel = new DefaultTableModel(database.MatrixSubject(), database.SubjectColumnNames);
 		table = new JTable(TableModel);
+		for(int i=0;i<TableModel.getRowCount();i++)
+		{
+			TableModel.removeRow(0);
+		}
+		for(int i=0; i<=database.initsubject.size();i++){
+			TableModel.addRow(database.initsubject.toArray());
+			for(int j =0 ; j<6; j++){
+			database.initsubject.remove(0);}
+		}
 		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.getColumnModel().getColumn(0).setPreferredWidth(150);
@@ -43,9 +56,7 @@ public class SubjectManage extends JFrame {
 		table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(table);
 		table.setAutoCreateRowSorter(true);	
-		
-	}
-
+        }
 
 	public SubjectManage(Intro introclass_parm) {
 		database = DataBase.getDataBase();
@@ -61,6 +72,7 @@ public class SubjectManage extends JFrame {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.setBounds(545, 45, 105, 45);
 		btnAdd.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
 				//thisSubjectManage.setVisible(false);
 				SubjectAdd subjectadd1 = new SubjectAdd(thisSubjectManage);
@@ -89,8 +101,8 @@ public class SubjectManage extends JFrame {
 				SubjectElement selectedSubject = database.getSelectedSubject(selectedRow);	//load selected Todo element on each field
 				database.getSelectedSubject(selectedRow);
 				database.SubjectDelete(selectedSubject, selectedRow);
-				
-				thisSubjectManage.SubjectTable();
+				SE.deleteDB(selectedRow);
+				thisSubjectManage.Subject_Table();
 			}
 		});
 		btnDelete.setBounds(545, 205, 105, 45);
@@ -110,6 +122,6 @@ public class SubjectManage extends JFrame {
 		scrollPane.setBounds(10, 10, 518, 375);
 		contentPane.add(scrollPane);
 
-		this.SubjectTable();
+		this.Subject_Table();
 	}
 }

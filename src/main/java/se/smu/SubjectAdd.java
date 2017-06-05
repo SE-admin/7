@@ -1,5 +1,6 @@
 package se.smu;
 
+import java.sql.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -21,7 +22,7 @@ import java.awt.event.ActionEvent;
 public class SubjectAdd extends JFrame {
 	
 	private DataBase database;
-	
+	private SubjectElement SE;
 	private JPanel contentPane;
 	private SubjectManage subjectmanageclass;
 	private SubjectAdd thisSubjectAdd = this;
@@ -237,12 +238,11 @@ public class SubjectAdd extends JFrame {
 				
 				
 				SubjectElement addSubject = new SubjectElement(txtSubject.getText(), txtProf.getText(), SelectDay, startHour, startMinute,
-						endHour, endMinute, ycYear.getValue(), semester);    //subject 구조체(?)에 내용 저장
-				
-				//DB의 Subject벡터에 꼬리 달기
+						endHour, endMinute, ycYear.getValue(), semester);
+				addSubject.insertDB();
 				database.SubjectAdd(addSubject);
-				//SubjectManage의 화면 테이블에 내용 add
-				subjectmanage_parm.SubjectTable();	
+
+				subjectmanage_parm.Subject_Table();	
 				subjectmanage_parm.setVisible(true);
 				thisSubjectAdd.dispose();
 				
