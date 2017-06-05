@@ -26,8 +26,6 @@ public class Intro extends JFrame {
 		TodoElement TE = new TodoElement(null, null, null, null, rootPaneCheckingEnabled, rootPaneCheckingEnabled);
 		if(TE.todoDBrow() != 0){
 			TE.todoinitDB();
-//			TodoElement = new TodoElement(null, null, null, null, rootPaneCheckingEnabled, rootPaneCheckingEnabled);
-//			database.TodoAdd(TodoElement);
 		}
 		setTitle("Intro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
