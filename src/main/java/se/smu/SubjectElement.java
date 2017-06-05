@@ -13,8 +13,7 @@ public class SubjectElement {
 	public String endminute;
 	public int year;
 	public String semester;
-	DataBase DB = new DataBase();
-	Vector<SubjectElement> SV = new Vector<SubjectElement>();
+	DataBase database = new DataBase();
 	
 	
 	public SubjectElement(String name, String prof, String selectDay, int startHour, String startMinute, int endHour,
@@ -86,10 +85,10 @@ public class SubjectElement {
 				this.startminute = rs.getString("Start").substring(rs.getString("Start").length()-2,rs.getString("Start").length());
 				this.endminute = rs.getString("End").substring(rs.getString("End").length()-2,rs.getString("End").length());
 				a = new SubjectElement(name, prof, selectday, starthour, startminute, endhour, endminute, year, semester);
-				DB.SubjectAdd(a);
+				database.SubjectAdd(a);
 				j++;
 			    }
-			    DB.MatrixSubject();
+			    database.MatrixSubject();
 			    rs.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

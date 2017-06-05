@@ -51,8 +51,6 @@ public class SubjectAdd extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-
-		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

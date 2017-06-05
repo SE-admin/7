@@ -41,7 +41,6 @@ public class DataBase {
 //subject등록 add
 		public void SubjectAdd(SubjectElement Element){
 			SubjectElement.add(Element);
-			
 		}
 	
 		public void SubjectChange(SubjectElement Element, int selectedRow){

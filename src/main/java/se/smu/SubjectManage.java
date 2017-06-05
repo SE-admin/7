@@ -31,17 +31,19 @@ public class SubjectManage extends JFrame {
 	public JScrollPane scrollPane;	
 	private SubjectElement SE = new SubjectElement(null, null, null, 0, null, 0, null, 0, null);
 	Vector<SubjectElement> SV = new Vector<SubjectElement>();
+
 	
 	public void Subject_Table(){
+		int cnt = SE.DBrow();
 		String[] SubjectColumnNames={"Subject", "Prof", "Year/Semester", "Day", "Start", "End"};
 		TableModel = new DefaultTableModel(database.MatrixSubject(), database.SubjectColumnNames);
 		table = new JTable(TableModel);
-		if(SE.DBrow() != 0){
+		if(cnt != 0){System.out.println(database.initsubject.size());
 		for(int i=0;i<TableModel.getRowCount();i++)
 		{
 			TableModel.removeRow(0);
 		}
-		for(int i=0; i<=database.initsubject.size();i++){
+		for(int i=0; i<cnt;i++){
 			TableModel.addRow(database.initsubject.toArray());
 			for(int j =0 ; j<6; j++){
 			database.initsubject.remove(0);}            

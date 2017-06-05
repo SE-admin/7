@@ -118,13 +118,14 @@ public class TodoManage extends JFrame {
 		
 }
 //initiate & update table
-	public void UpdateTable(){   
+	public void UpdateTable(){  
+		int cnt = TE.todoDBrow();
 		table = new JTable();
 		TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
 		table.setModel(TableModel);		// set table model 
 		table = new JTable(TableModel);
-		if(TE.todoDBrow() != 0){
-		for(int i=0; i<=DataBase.inittodo.size();i++){
+		if(cnt != 0){
+		for(int i=0; i<cnt;i++){
 			TableModel.addRow(DataBase.inittodo.toArray());
 			for(int j =0 ; j<6; j++){
 				DataBase.inittodo.remove(0);
