@@ -3,6 +3,7 @@ package se.smu;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -10,7 +11,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-//
+
 public class DataBase {
 	private static DataBase DataBase;
 	
@@ -23,12 +24,14 @@ public class DataBase {
 				"38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"};
 		public final String[] Am = {"AM", "PM"};    //Subject영역에서 사용
 		public final String[] Semester = {"1", "2"};  //Subject영역에서 사용
-
+		public boolean Hide=false;
 		
 		public static Vector<SubjectElement> SubjectElement = new Vector<SubjectElement>();
 		public static Vector<TodoElement> TodoElement = new Vector <TodoElement>();
 		public static Vector<String> initsubject = new Vector <String>();
 		public static Vector<String> inittodo = new Vector <String>();
+		HashMap<Integer, Integer> HideHashMap=new HashMap<Integer,Integer>();			// mapping'Show index' to 'Vector index'
+		
 		public static DataBase getDataBase() {
 			if(DataBase==null){
 				DataBase = new DataBase();
@@ -95,14 +98,24 @@ public class DataBase {
 		}
 
 // selected todo아이템에 대한 return todoitelement (화면에 기존 정보 뿌리기위함)
-// selected row에 대한 index필요 ~> ind exx로 vector 찾아 리턴
 		public TodoElement getSelectedTodoElement(int selectedRow){
-			TodoElement selectedTodoElement = TodoElement.get(selectedRow);		// find which Todoitem is selected in Vector 
+			TodoElement selectedTodoElement;
+			if(Hide==false)
+				selectedTodoElement = TodoElement.get(selectedRow);		// find which Todo element is selected in Vector 
+			else{
+				int change=HideHashMap.get(selectedRow);
+				selectedTodoElement = TodoElement.get(change);
+			}	
 			return selectedTodoElement;
 		}
 		
 		public void TodoDelete(TodoElement Element, int selectedRow){
-			TodoElement.remove(selectedRow);								// remove selected vector 
+			if(Hide==false)
+				TodoElement.remove(selectedRow);								// remove selected vector 
+			else{
+				int delete=HideHashMap.get(selectedRow);
+				TodoElement.remove(delete);
+			}
 		}
 //Todoelement 2차원 배열화 ~> datamodel에 사용을 위함 * Object [] [] 행값 넘겨줌 
 		
@@ -124,7 +137,60 @@ public class DataBase {
 			}
 			return null;	
 		}	
-		
+/*
+* calculate size of matrix used in method below //count not completed item in Vector to allocate matrix
+*/
+			public int SizeofMatrix(){
+				int size=0;
+				Iterator<TodoElement> iterator=TodoElement.iterator();
+				TodoElement element=new TodoElement(null, null, null, null, false, false);
+				for(int i=0; iterator.hasNext();i++){
+					element=iterator.next();
+					if(element.Completed==false)
+						size++;
+				}
+				return size;
+			}		
+/* 
+* Table model for 'hide or show completed To do'
+*/
+				public String[][] MatrixHideShowCompleted(){
+					int size=SizeofMatrix();
+					String [][] TodoMatrix= new String [size][6];   // fill the matrix using iterator
+					Iterator<TodoElement> iterator=TodoElement.iterator();
+					TodoElement element=new TodoElement(null, null, null, null, false, false);
+					int ShowIndex=0;								//Model Index of table model
+					HideHashMap.clear();  					//clear hashmap for updating mapping index ~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+					for(int i=0; iterator.hasNext();i++){			// i is vector index
+						element=iterator.next();
+						if(element.Completed==false){									// remove completed item from data model		
+						HideHashMap.put(ShowIndex,i );							//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+								
+						TodoMatrix[ShowIndex][0]=element.Todo;
+						TodoMatrix[ShowIndex][1]=element.Subject;
+						SimpleDateFormat Dead_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a");     //Data format * 'a' is Am/Pm marker
+						TodoMatrix[ShowIndex][2]=Dead_sdf.format(element.Deadline.getTime());						//Convert Date to String
+						SimpleDateFormat Due_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a"); 
+						
+						SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy.M.dd hh:mm a");	
+						Calendar cal1=Calendar.getInstance();
+						cal1.set(2002,10,11,11,11);														//Default
+						String dateA=simpleDateFormat.format(cal1.getTime());
+						String dateB=simpleDateFormat.format(element.DueDate.getTime());
+						if(dateA.compareTo(dateB)==0) 											//Default value of DueDate will be shown " - " in table
+							TodoMatrix[ShowIndex][3]="  -  ";	
+						else
+							TodoMatrix[ShowIndex][3]=Due_sdf.format(element.DueDate.getTime());	
+									
+						if (element.Completed==true) TodoMatrix[ShowIndex][4]="O" ;
+						else TodoMatrix[ShowIndex][4]="X";
+						if (element.Importance==true) TodoMatrix[ShowIndex][5]="O" ;
+						else TodoMatrix[ShowIndex][5]="X";	
+							ShowIndex++;
+							}
+							}
+						return TodoMatrix;	
+						}	
 		
 		
 	
