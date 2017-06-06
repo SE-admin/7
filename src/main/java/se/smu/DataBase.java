@@ -30,7 +30,7 @@ public class DataBase {
 		public static Vector<TodoElement> TodoElement = new Vector <TodoElement>();
 		public static Vector<String> initsubject = new Vector <String>();
 		public static Vector<String> inittodo = new Vector <String>();
-		HashMap<Integer, Integer> HideHashMap=new HashMap<Integer,Integer>();			// mapping'Show index' to 'Vector index'
+		public static HashMap<Integer, Integer> HideHashMap=new HashMap<Integer,Integer>();			// mapping'Show index' to 'Vector index'
 		
 		public static DataBase getDataBase() {
 			if(DataBase==null){
@@ -103,7 +103,7 @@ public class DataBase {
 			if(Hide==false)
 				selectedTodoElement = TodoElement.get(selectedRow);		// find which Todo element is selected in Vector 
 			else{
-				int change=HideHashMap.get(selectedRow)+1;
+				int change=HideHashMap.get(selectedRow);
 				selectedTodoElement = TodoElement.get(change);
 			}	
 			return selectedTodoElement;
@@ -113,7 +113,7 @@ public class DataBase {
 			if(Hide==false)
 				TodoElement.remove(selectedRow);								// remove selected vector 
 			else{
-				int delete=HideHashMap.get(selectedRow)+1;
+				int delete=HideHashMap.get(selectedRow);
 				TodoElement.remove(delete);
 			}
 		}
