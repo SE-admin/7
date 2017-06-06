@@ -45,7 +45,6 @@ public class TodoAdd extends JFrame {
 	public TodoAdd(TodoManage todomanage_parm) {
 		DataBase = DataBase.getDataBase();					//Import Todo
 		todomanageclass = todomanage_parm;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 723, 478);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -176,21 +175,17 @@ public class TodoAdd extends JFrame {
 		
 			String Todo=txtTodo.getText();
 			String Subject=(String) cbSubject.getSelectedItem();
-			//boolean Completed=checkCompleted.isSelected();				//in act of adding, 'Completed' is not needed
 			boolean Completed=false;
 		    boolean Importance=checkImportance.isSelected();
 		    
         	Calendar CalendarDeadline=Calendar.getInstance();					//Using Calendar, store yyyy.MM.DD.hh.mm 
 			CalendarDeadline.setTime(JCalendarDeadline.getDate());				//getDate() to which date is selected in JCalendar
 			Calendar CalendarDueDate=Calendar.getInstance();
-			//CalendarDueDate.setTime(JCalendarDueDate.getDate());
 // HOUR, MINUTE are selected from JCombox that returns STRING. Store hour and minute in Calendar with date value			
 			CalendarDeadline.set(Calendar.HOUR, Integer.parseInt((String) cbDeadlineHour.getSelectedItem()));   
 			CalendarDeadline.set(Calendar.MINUTE, Integer.parseInt((String) cbDeadlineMinute.getSelectedItem()));
-			//CalendarDueDate.set(Calendar.HOUR, Integer.parseInt((String)cbDueDateHour.getSelectedItem()));
-			//CalendarDueDate.set(Calendar.MINUTE, Integer.parseInt((String)cbDueDateMinute.getSelectedItem()));
+			CalendarDueDate.set(2002,10,11,11,11); 								//set DueDate to default
 //AM_PM설정 			
-			//TodoAdd.AM_PM(CalendarDueDate, btnAmPmDueDate);
 			TodoAdd.AM_PM(CalendarDeadline, btnAmPmDeadline);
 		
 		    
