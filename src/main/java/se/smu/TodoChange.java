@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.swing.JButton;
@@ -28,8 +29,6 @@ public class TodoChange extends JFrame {
 		String loadedAmPm;																//variable for loading Am/Pm on each button
 		DataBase = DataBase.getDataBase();												//import DB
 		TodoElement selectedTodoElement = DataBase.getSelectedTodoElement(selectedRow);	//load selected Todo element on each field
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 751, 483);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -137,26 +136,47 @@ public class TodoChange extends JFrame {
 		cbDeadlineMinute.setMaximumRowCount(59);
 		cbDeadlineMinute.setBounds(258, 106, 59, 24);
 		contentPane.add(cbDeadlineMinute);
-		
-		JComboBox cbDueDateHour = new JComboBox(DataBase.Hour);
-		cbDueDateHour.setSelectedIndex(selectedTodoElement.DueDate.get(Calendar.HOUR)-1);							//
-		cbDueDateHour.setMaximumRowCount(12);
-		cbDueDateHour.setBounds(194, 143, 59, 24);
-		contentPane.add(cbDueDateHour);
-		
-		
-		JComboBox cbDueDateMinute = new JComboBox(DataBase.Minute);
-		cbDueDateMinute.setSelectedIndex(selectedTodoElement.DueDate.get(Calendar.MINUTE));					//
-		cbDueDateMinute.setMaximumRowCount(12);
-		cbDueDateMinute.setBounds(258, 143, 59, 24);
-		contentPane.add(cbDueDateMinute);
 
 		JCalendar JCalendarDueDate = new JCalendar();
+//** Calendar Default **///MIN,HOUR	
+		SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy.M.dd hh:mm a");	
+		Calendar cal1=Calendar.getInstance();
+		cal1.set(2002,10,11,11,11);														//Default
+		String dateA=simpleDateFormat.format(cal1.getTime());
+		String dateB=simpleDateFormat.format(selectedTodoElement.DueDate.getTime());
+		if(dateA.compareTo(dateB)==0){
+			Calendar c = Calendar.getInstance();								
+			 JCalendarDueDate.setCalendar(c); 
+			}
+		else
+			JCalendarDueDate.setCalendar(selectedTodoElement.DueDate);			// load Calendar data
+//
 		JCalendarDueDate.setWeekOfYearVisible(false);
 		JCalendarDueDate.setNullDateButtonText("");
 		JCalendarDueDate.setDecorationBordersVisible(true);
 		JCalendarDueDate.setBounds(387, 183, 325, 229);
 		contentPane.add(JCalendarDueDate);
+		
+		JComboBox cbDueDateHour = new JComboBox(DataBase.Hour);
+		if(dateA.compareTo(dateB)==0){
+			Calendar c = Calendar.getInstance(); 
+			cbDueDateHour.setSelectedIndex(c.get(Calendar.HOUR));   }																
+		else
+			cbDueDateHour.setSelectedIndex(selectedTodoElement.DueDate.get(Calendar.HOUR)-1);	
+		cbDueDateHour.setMaximumRowCount(12);
+		cbDueDateHour.setBounds(194, 143, 59, 24);
+		contentPane.add(cbDueDateHour);
+		
+		JComboBox cbDueDateMinute = new JComboBox(DataBase.Minute);
+		if(dateA.compareTo(dateB)==0){
+			Calendar c = Calendar.getInstance();
+			cbDueDateMinute.setSelectedIndex(c.get(Calendar.MINUTE));   }
+																							//
+		else
+			cbDueDateMinute.setSelectedIndex(selectedTodoElement.DueDate.get(Calendar.MINUTE));					//
+		cbDueDateMinute.setMaximumRowCount(12);
+		cbDueDateMinute.setBounds(258, 143, 59, 24);
+		contentPane.add(cbDueDateMinute);
 		
 		JCalendar JCalendarDeadline = new JCalendar();
 		JCalendarDeadline.setWeekOfYearVisible(false);
@@ -165,9 +185,10 @@ public class TodoChange extends JFrame {
 		JCalendarDeadline.setBounds(17, 183, 325, 229);
 		contentPane.add(JCalendarDeadline);
 		
+		
 
 		
-//TODO -Ing ~> TodoAdd의 change부분과 겹치는데..함수화할까?
+//TODO 
 		JButton btnChange = new JButton("Change");
 		btnChange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
