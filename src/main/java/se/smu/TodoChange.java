@@ -195,7 +195,8 @@ public class TodoChange extends JFrame {
 				TodoElement.todochangeDB(selectedRow);
 				DataBase.getSelectedTodoElement(selectedRow);
 				DataBase.TodoChange(TodoElement, selectedRow);
-				todomanage_parm.UpdateTable();
+				todomanage_parm.SelectUpdateTableMethod();
+				//todomanage_parm.UpdateTable();
 				todomanage_parm.setVisible(true);
 				thisTodoChange.dispose();
 			}
