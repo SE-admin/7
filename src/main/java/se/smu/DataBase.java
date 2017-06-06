@@ -10,7 +10,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-
+//
 public class DataBase {
 	private static DataBase DataBase;
 	
