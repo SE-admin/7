@@ -80,8 +80,8 @@ public class TodoManage extends JFrame {
 				selectedTodoElement.tododeleteDB(selectedRow);
 				DataBase.getSelectedTodoElement(selectedRow);
 				DataBase.TodoDelete(selectedTodoElement, selectedRow);
-				
-				thisTodoManage.UpdateTable();
+				thisTodoManage.SelectUpdateTableMethod();
+				//thisTodoManage.UpdateTable()
 			}
 		});
 		btnNewButton_1.setBounds(779, 200, 105, 45);
@@ -112,7 +112,37 @@ public class TodoManage extends JFrame {
 		btnResetSort.setBounds(779, 50, 105, 45);
 		contentPane.add(btnResetSort);
 	
-		thisTodoManage.UpdateTable();						// Create initial table 
+/*
+ ******HIDE AND SHOW COMPLETED TO DO
+***************구현
+**********************************~
+*/
+		JButton btnHideShowCompleted = new JButton();
+		if(DataBase.Hide==false)
+			btnHideShowCompleted.setText("Hide");
+		else
+			btnHideShowCompleted.setText("Show");
+		btnHideShowCompleted.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+				if((btnHideShowCompleted.getText()).equals("Hide")){
+					btnHideShowCompleted.setText("Show");					//AM to PM button text when it is clicked
+					thisTodoManage.UpdateTable_HideShowCompleted();							// Hide completed item
+					DataBase.Hide=true;
+				}
+				else{
+					btnHideShowCompleted.setText("Hide");
+					thisTodoManage.UpdateTable();											// back to original
+					DataBase.Hide=false;
+				}
+				}
+							
+				});
+		btnHideShowCompleted.setBounds(826, 274, 105, 29);
+		contentPane.add(btnHideShowCompleted);
+					
+		thisTodoManage.SelectUpdateTableMethod(); 									///~~~~~~~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//thisTodoManage.UpdateTable();													//create table
+
 
 		
 		
@@ -152,7 +182,32 @@ public class TodoManage extends JFrame {
 		RowSorter sorter = new TableRowSorter(TableModel);
 		table.setRowSorter(sorter);									 // sort table
 		}
+//Data model for 'HIDE AND SHOW COMPLETED TO DO'
 	
+	public void UpdateTable_HideShowCompleted(){  
+		table = new JTable();
+		TableModel=new DefaultTableModel(DataBase.MatrixHideShowCompleted(),DataBase.TodoColumnNames);
+		table.setModel(TableModel);																	// set table model 
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.getColumnModel().getColumn(0).setPreferredWidth(150);
+		table.getColumnModel().getColumn(1).setPreferredWidth(96);
+		table.getColumnModel().getColumn(2).setPreferredWidth(157);
+		table.getColumnModel().getColumn(3).setPreferredWidth(157);
+		table.getColumnModel().getColumn(4).setPreferredWidth(50);
+		table.getColumnModel().getColumn(5).setPreferredWidth(50);
+		table.setFillsViewportHeight(true);
+		scrollPane.setViewportView(table);
+		table.setAutoCreateRowSorter(true);										 // sort table
+	}
+		
+//Select which 'update table' method will be used according to the statement of Hide/Show button
+	public void SelectUpdateTableMethod(){
+		if(DataBase.Hide==false)
+			thisTodoManage.UpdateTable();
+		else
+			thisTodoManage.UpdateTable_HideShowCompleted();
+		}
+
 //	public void Update_Table(){   
 //		table = new JTable();
 //		TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
