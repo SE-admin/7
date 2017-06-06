@@ -82,16 +82,22 @@ public class TodoManage extends JFrame {
 		JButton btnNewButton_1 = new JButton("Delete");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				int selectedRow=table.convertColumnIndexToModel(table.getSelectedRow());
-				TodoElement selectedTodoElement = DataBase.getSelectedTodoElement(selectedRow);	//load selected Todo element on each field
-				selectedTodoElement.tododeleteDB(selectedRow);
-				DataBase.getSelectedTodoElement(selectedRow);
-				DataBase.TodoDelete(selectedTodoElement, selectedRow);
-				thisTodoManage.SelectUpdateTableMethod();
-				//thisTodoManage.UpdateTable()
-			}
-		});
+				  try{
+					int selectedRow=table.convertRowIndexToModel(table.getSelectedRow());
+					if(selectedRow>-1){
+					TodoElement selectedTodoElement = DataBase.getSelectedTodoElement(selectedRow);	//load selected Todo element on each field
+					DataBase.getSelectedTodoElement(selectedRow);
+					DataBase.TodoDelete(selectedTodoElement, selectedRow);
+					thisTodoManage.SelectUpdateTableMethod();
+					//thisTodoManage.UpdateTable();
+					}
+				  }
+				  catch(Exception ex){
+						 JOptionPane.showConfirmDialog(contentPane, "Please select To do", "Alert", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null);
+					 }
+				
+				}
+			});
 		btnNewButton_1.setBounds(779, 200, 105, 45);
 		contentPane.add(btnNewButton_1);
 		
