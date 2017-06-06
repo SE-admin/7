@@ -3,8 +3,10 @@ package se.smu;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Frame;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
@@ -16,6 +18,7 @@ import javax.swing.JTable;
 
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+
 import javax.swing.ListSelectionModel;
 
 public class SubjectManage extends JFrame {
@@ -23,6 +26,7 @@ public class SubjectManage extends JFrame {
 	private JPanel contentPane;
 	
 	private SubjectManage thisSubjectManage = this;
+	private Frame frame = this;
 	
 	private DataBase database;
 	
@@ -94,9 +98,17 @@ public class SubjectManage extends JFrame {
 		btnChange.setBounds(545, 125, 105, 45);
 		btnChange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int selectedrow = table.convertRowIndexToModel(table.getSelectedRow());
-				SubjectChange subjectchange = new SubjectChange(thisSubjectManage, selectedrow);
-				subjectchange.setVisible(true);
+				try{
+					int selectedrow = table.convertRowIndexToModel(table.getSelectedRow());
+					if(selectedrow > -1){
+						SubjectChange subjectchange = new SubjectChange(thisSubjectManage, selectedrow);
+						subjectchange.setVisible(true);
+					}
+				}
+				catch(Exception ex){
+					JOptionPane.showMessageDialog(frame, "Select row", "Error", JOptionPane.WARNING_MESSAGE);
+				}
+			
 			}
 		});
 		contentPane.add(btnChange);
