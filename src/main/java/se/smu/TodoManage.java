@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -64,11 +65,18 @@ public class TodoManage extends JFrame {
 		btnNewButton.setBounds(779, 150, 105, 45);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int selectedRow = table.convertRowIndexToModel(table.getSelectedRow());					// jtable에는 view index, model index따로존재 mapping정보 알 수 있다. 
-				TodoChange todochange = new TodoChange(thisTodoManage, selectedRow);
-				todochange.setVisible(true);
-			}
-		});
+				 try{											
+					int selectedRow = table.convertRowIndexToModel(table.getSelectedRow());					// change view index to model index 
+					if(selectedRow>-1){
+					TodoChange todochange = new TodoChange(thisTodoManage, selectedRow);						
+					todochange.setVisible(true);
+					}
+				}
+				 catch(Exception ex){
+					 JOptionPane.showConfirmDialog(contentPane, "Please select To do ", "Alert", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null);
+				 }
+				}
+			});
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Delete");
