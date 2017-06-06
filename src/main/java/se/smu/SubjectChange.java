@@ -38,7 +38,7 @@ public class SubjectChange extends JFrame {
 		
 		setTitle("Change");
 		subjectmanageclass = subjectmanage_parm;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 743, 366);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
