@@ -162,7 +162,12 @@ public class TodoManage extends JFrame {
 		
 }
 //initiate & update table
-	public void UpdateTable(){  
+	public void UpdateTable(){ 
+		TableModel = new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames){    //테이블 수정 금지
+	         public boolean isCellEditable(int row, int column){
+	            return false;
+	            }
+	      };
 		int cnt = TE.todoDBrow();
 		table = new JTable();
 		TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
@@ -199,7 +204,12 @@ public class TodoManage extends JFrame {
 		}
 //Data model for 'HIDE AND SHOW COMPLETED TO DO'
 	
-	public void UpdateTable_HideShowCompleted(){  
+	public void UpdateTable_HideShowCompleted(){
+		TableModel = new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames){    //테이블 수정 금지
+	         public boolean isCellEditable(int row, int column){
+	            return false;
+	            }
+	      };
 		table = new JTable();
 		TableModel=new DefaultTableModel(DataBase.MatrixHideShowCompleted(),DataBase.TodoColumnNames);
 		table.setModel(TableModel);																	// set table model 
