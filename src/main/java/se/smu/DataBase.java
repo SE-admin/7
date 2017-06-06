@@ -25,7 +25,8 @@ public class DataBase {
 		public final String[] Am = {"AM", "PM"};    //Subject영역에서 사용
 		public final String[] Semester = {"1", "2"};  //Subject영역에서 사용
 		public boolean Hide=false;
-		
+		private JTable table;
+		private DefaultTableModel TableModel;
 		public static Vector<SubjectElement> SubjectElement = new Vector<SubjectElement>();
 		public static Vector<TodoElement> TodoElement = new Vector <TodoElement>();
 		public static Vector<String> initsubject = new Vector <String>();
@@ -207,6 +208,12 @@ public class DataBase {
 						return TodoMatrix;	
 						}	
 		
-		
+//need to check redundancy																								**********************************
+	public void setTableModel(DefaultTableModel tablemodel){									
+		TableModel=tablemodel;
+		}
+	public DefaultTableModel getTableModel(){
+		return TableModel;
+	}	
 	
 }
