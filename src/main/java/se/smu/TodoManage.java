@@ -105,7 +105,7 @@ public class TodoManage extends JFrame {
 		
 		btnResetSort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				thisTodoManage.UpdateTable();
+				thisTodoManage.SelectUpdateTableMethod();
 			}
 		});
 		btnResetSort.setForeground(Color.BLACK);

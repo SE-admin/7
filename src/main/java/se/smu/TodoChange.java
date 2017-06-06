@@ -179,6 +179,7 @@ public class TodoChange extends JFrame {
 		contentPane.add(cbDueDateMinute);
 		
 		JCalendar JCalendarDeadline = new JCalendar();
+		JCalendarDeadline.setCalendar(selectedTodoElement.Deadline);					//load Calendar data
 		JCalendarDeadline.setWeekOfYearVisible(false);
 		JCalendarDeadline.setNullDateButtonText("");
 		JCalendarDeadline.setDecorationBordersVisible(true);
