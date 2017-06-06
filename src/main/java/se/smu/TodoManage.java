@@ -153,6 +153,7 @@ public class TodoManage extends JFrame {
 		table = new JTable();
 		TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
 		table.setModel(TableModel);		// set table model 
+		DataBase.setTableModel(TableModel);
 		table = new JTable(TableModel);
 		if(cnt != 0){
 		for(int i=0; i<cnt;i++){
@@ -188,6 +189,7 @@ public class TodoManage extends JFrame {
 		table = new JTable();
 		TableModel=new DefaultTableModel(DataBase.MatrixHideShowCompleted(),DataBase.TodoColumnNames);
 		table.setModel(TableModel);																	// set table model 
+		DataBase.setTableModel(TableModel);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.getColumnModel().getColumn(0).setPreferredWidth(150);
 		table.getColumnModel().getColumn(1).setPreferredWidth(96);
