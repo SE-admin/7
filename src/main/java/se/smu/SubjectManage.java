@@ -36,7 +36,12 @@ public class SubjectManage extends JFrame {
 	public void Subject_Table(){
 		int cnt = SE.DBrow();
 		String[] SubjectColumnNames={"Subject", "Prof", "Year/Semester", "Day", "Start", "End"};
-		TableModel = new DefaultTableModel(database.MatrixSubject(), database.SubjectColumnNames);
+		TableModel = new DefaultTableModel(database.MatrixSubject(), database.SubjectColumnNames){
+			public boolean isCellEditable(int row, int column){
+				return false;
+				}
+		};;
+		
 		table = new JTable(TableModel);
 		if(cnt != 0){System.out.println(database.initsubject.size());
 		for(int i=0;i<TableModel.getRowCount();i++)
