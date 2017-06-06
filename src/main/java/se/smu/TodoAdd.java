@@ -36,6 +36,7 @@ public class TodoAdd extends JFrame {
 	private DataBase DataBase;
 	public TodoElement TodoElement;
 	public JOptionPane JOptionPane;
+	private JComboBox cbSubject;
 	public static void AM_PM(Calendar calendar, JButton btn){					//methods for set Calendar's AM_PM
 		if((btn.getText()).equals("AM"))
 			calendar.set(Calendar.AM_PM, Calendar.AM);
@@ -85,7 +86,7 @@ public class TodoAdd extends JFrame {
 		txtTodo.setColumns(10);
 		
 //subject DB 연동 
-		JComboBox cbSubject = new JComboBox(DataBase.getSubjectName());
+		cbSubject = new JComboBox(DataBase.getSubjectName());
 		cbSubject.setBounds(133, 111, 200, 24);
 		contentPane.add(cbSubject);
 /*		
@@ -194,6 +195,8 @@ public class TodoAdd extends JFrame {
 				JOptionPane.showConfirmDialog(contentPane, "Please enter To do", "Alert", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null);
 			else if(cbSubject.getItemCount()==0)
 				JOptionPane.showConfirmDialog(contentPane, "Please select subject", "Alert", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null);	
+			else if(CheckTodoRedundancy()==true)
+				JOptionPane.showConfirmDialog(contentPane, "This To do already exists! ", "Alert", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null);
 			else{
 //Update DataBase and table 
 			TodoElement TodoElement=new TodoElement(Todo, Subject, CalendarDeadline, CalendarDueDate, Completed, Importance);
@@ -211,6 +214,18 @@ public class TodoAdd extends JFrame {
 		
 		
 	}
-	
+	//Check Todo redundancy																		******************************************
+		public boolean CheckTodoRedundancy(){
+			int NumberofRows=DataBase.getTableModel().getRowCount();
+			boolean result=false;
+			for(int i=0 ; i<NumberofRows&&result==false;i++){
+				String cellTodo=  (String) DataBase.getTableModel().getValueAt(i, 0);
+				String cellSubject=(String)DataBase.getTableModel().getValueAt(i, 1);
+				String Subject=cbSubject.getSelectedItem().toString();
+				if(txtTodo.getText().equals(cellTodo)&&Subject.equals(cellSubject))
+					result=true;
+			}
+			return result;
+		}	
 }
 
