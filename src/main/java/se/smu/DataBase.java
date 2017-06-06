@@ -128,8 +128,23 @@ public class DataBase {
 				this.inittodo.add(TodoMatrix[i][1]=element.Subject);
 				SimpleDateFormat Dead_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a"); //Date출력 형식 지정 * 'a' is Am/pm marker
 				this.inittodo.add(TodoMatrix[i][2]=Dead_sdf.format(element.Deadline.getTime()));						//Convert Date to String
-				SimpleDateFormat Due_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a"); 
-				this.inittodo.add(TodoMatrix[i][3]=Due_sdf.format(element.DueDate.getTime()));	
+				
+				// 자훈오빠 코드 
+				//SimpleDateFormat Due_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a"); 
+				//this.inittodo.add(TodoMatrix[i][3]=Due_sdf.format(element.DueDate.getTime()));
+				
+//* Due고친부분 
+				SimpleDateFormat Due_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a");
+				SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy.M.dd hh:mm a");	
+				Calendar cal1=Calendar.getInstance();
+				cal1.set(2002,10,11,11,11);														//Default
+				String dateA=simpleDateFormat.format(cal1.getTime());
+				String dateB=simpleDateFormat.format(element.DueDate.getTime());
+				if(dateA.compareTo(dateB)==0) 											//Default value of DueDate will be shown " - " in table
+					this.inittodo.add((TodoMatrix[i][3]="  -  "));	
+				else
+					this.inittodo.add(TodoMatrix[i][3]=Due_sdf.format(element.DueDate.getTime()));	
+//			
 				if (element.Completed == true) this.inittodo.add(TodoMatrix[i][4]="O") ;
 				else this.inittodo.add(TodoMatrix[i][4]="X");
 				if (element.Importance== true) this.inittodo.add(TodoMatrix[i][5]="O") ;
