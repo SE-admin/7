@@ -24,6 +24,7 @@ import com.toedter.calendar.JCalendar;
 import java.beans.PropertyChangeListener;
 import java.util.Date;
 import java.beans.PropertyChangeEvent;
+import javax.swing.JOptionPane;
 
 public class TodoAdd extends JFrame {
 
@@ -34,7 +35,7 @@ public class TodoAdd extends JFrame {
 	public JScrollPane scrollPane;	
 	private DataBase DataBase;
 	public TodoElement TodoElement;
-	
+	public JOptionPane JOptionPane;
 	public static void AM_PM(Calendar calendar, JButton btn){					//methods for set Calendar's AM_PM
 		if((btn.getText()).equals("AM"))
 			calendar.set(Calendar.AM_PM, Calendar.AM);
@@ -188,7 +189,12 @@ public class TodoAdd extends JFrame {
 //AM_PM설정 			
 			TodoAdd.AM_PM(CalendarDeadline, btnAmPmDeadline);
 		
-		    
+//Alert 
+			if(Todo.equals(""))
+				JOptionPane.showConfirmDialog(contentPane, "Please enter To do", "Alert", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null);
+			else if(cbSubject.getItemCount()==0)
+				JOptionPane.showConfirmDialog(contentPane, "Please select subject", "Alert", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null);	
+			else{
 //Update DataBase and table 
 			TodoElement TodoElement=new TodoElement(Todo, Subject, CalendarDeadline, CalendarDueDate, Completed, Importance);
 			TodoElement.todoinsertDB();
@@ -197,6 +203,7 @@ public class TodoAdd extends JFrame {
 			//todomanage_parm.UpdateTable();		    //update table
 			todomanage_parm.setVisible(true);
 			thisTodoAdd.dispose();
+			}
 			}
 		});
 		btnAdd.setBounds(571, 40, 105, 45);
