@@ -103,7 +103,7 @@ public class DataBase {
 			if(Hide==false)
 				selectedTodoElement = TodoElement.get(selectedRow);		// find which Todo element is selected in Vector 
 			else{
-				int change=HideHashMap.get(selectedRow);
+				int change=HideHashMap.get(selectedRow)+1;
 				selectedTodoElement = TodoElement.get(change);
 			}	
 			return selectedTodoElement;
@@ -113,7 +113,7 @@ public class DataBase {
 			if(Hide==false)
 				TodoElement.remove(selectedRow);								// remove selected vector 
 			else{
-				int delete=HideHashMap.get(selectedRow);
+				int delete=HideHashMap.get(selectedRow)+1;
 				TodoElement.remove(delete);
 			}
 		}
