@@ -189,7 +189,7 @@ public class TodoAdd extends JFrame {
 //AM_PM설정 			
 			TodoAdd.AM_PM(CalendarDeadline, btnAmPmDeadline);
 		
-//Alert 
+///Alert 
 			if(Todo.equals(""))
 				JOptionPane.showConfirmDialog(contentPane, "Please enter To do", "Alert", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null);
 			else if(cbSubject.getItemCount()==0)
