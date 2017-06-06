@@ -116,13 +116,19 @@ public class SubjectManage extends JFrame {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
-				int selectedRow=table.convertRowIndexToModel(table.getSelectedRow());
-				SubjectElement selectedSubject = database.getSelectedSubject(selectedRow);	//load selected Todo element on each field
-				database.getSelectedSubject(selectedRow);
-				database.SubjectDelete(selectedSubject, selectedRow);
-				SE.deleteDB(selectedRow);
-				thisSubjectManage.Subject_Table();
+				try{
+					int selectedRow=table.convertRowIndexToModel(table.getSelectedRow());
+					if(selectedRow > -1){
+						SubjectElement selectedSubject = database.getSelectedSubject(selectedRow);
+						database.getSelectedSubject(selectedRow);
+						database.SubjectDelete(selectedSubject, selectedRow);
+						SE.deleteDB(selectedRow);
+						thisSubjectManage.Subject_Table();
+					}
+				}
+				catch(Exception ex){
+					JOptionPane.showMessageDialog(frame, "Select row", "Error", JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
 		btnDelete.setBounds(545, 205, 105, 45);
