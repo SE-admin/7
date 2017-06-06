@@ -198,7 +198,8 @@ public class TodoAdd extends JFrame {
 			TodoElement TodoElement=new TodoElement(Todo, Subject, CalendarDeadline, CalendarDueDate, Completed, Importance);
 			TodoElement.todoinsertDB();
 			DataBase.TodoAdd(TodoElement);
-			todomanage_parm.UpdateTable();		    //update table
+			todomanage_parm.SelectUpdateTableMethod();
+			//todomanage_parm.UpdateTable();		    //update table
 			todomanage_parm.setVisible(true);
 			thisTodoAdd.dispose();
 			}
