@@ -86,6 +86,12 @@ public class TodoManage extends JFrame {
 					int selectedRow=table.convertRowIndexToModel(table.getSelectedRow());
 					if(selectedRow>-1){
 					TodoElement selectedTodoElement = DataBase.getSelectedTodoElement(selectedRow);	//load selected Todo element on each field
+					if(DataBase.Hide==false)
+					selectedTodoElement.tododeleteDB(selectedRow);
+					else{
+						int change=DataBase.HideHashMap.get(selectedRow);
+						selectedTodoElement.tododeleteDB(change);
+					}
 					DataBase.getSelectedTodoElement(selectedRow);
 					DataBase.TodoDelete(selectedTodoElement, selectedRow);
 					thisTodoManage.SelectUpdateTableMethod();
