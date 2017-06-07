@@ -4,14 +4,17 @@ import java.sql.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Frame;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JYearChooser;
 
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
@@ -26,6 +29,7 @@ public class SubjectAdd extends JFrame {
 	private JPanel contentPane;
 	private SubjectManage subjectmanageclass;
 	private SubjectAdd thisSubjectAdd = this;
+	private Frame frame = this;
 	
 	private JTextField txtSubject;
 	private JTextField txtProf;
@@ -228,14 +232,71 @@ public class SubjectAdd extends JFrame {
 				else if (btnSun.getBackground() == Color.CYAN)
 					SelectDay = btnSun.getText();
 				
-				
-				SubjectElement addSubject = new SubjectElement(txtSubject.getText(), txtProf.getText(), SelectDay, startHour, startMinute,
-						endHour, endMinute, ycYear.getValue(), semester);
-				addSubject.insertDB();
-				database.SubjectAdd(addSubject);
-				subjectmanage_parm.Subject_Table();	
-				subjectmanage_parm.setVisible(true);
-				thisSubjectAdd.dispose();
+				if(txtSubject.getText().isEmpty() & txtProf.getText().isEmpty() & startHour == endHour & startMinute == endMinute & SelectDay == null)
+					JOptionPane.showMessageDialog(frame, "Write Subject and Prof name, Select Time and Day of the week.", "정보 누락", JOptionPane.WARNING_MESSAGE); //과목-교수-요일-시간
+					else if(txtSubject.getText().isEmpty()){
+						if(txtProf.getText().isEmpty()){
+							if(startHour == endHour & startMinute == endMinute)
+								JOptionPane.showMessageDialog(frame, "Write Subject and Prof name, Select Time.", "정보 누락", JOptionPane.WARNING_MESSAGE); //교수-과목-시간
+							else{
+								if(SelectDay == null)
+									JOptionPane.showMessageDialog(frame, "Write Subject and Prof name, Select Day of the week.", "정보 누락", JOptionPane.WARNING_MESSAGE);  //과목-교수-요일
+								else
+									JOptionPane.showMessageDialog(frame, "Write Subject and Prof name.", "정보 누락", JOptionPane.WARNING_MESSAGE); //과목-교수
+							}
+						}
+						else if(SelectDay == null){
+							if(startHour == endHour & startMinute == endMinute)
+								JOptionPane.showMessageDialog(frame, "Write Subject name, Select time and Day of the week.", "정보 누락", JOptionPane.WARNING_MESSAGE);  //과목-요일-시간
+							else
+								JOptionPane.showMessageDialog(frame, "Write Subject name and Select Day of the week.", "정보 누락", JOptionPane.WARNING_MESSAGE); //과목-요일
+						}
+						else if(startHour == endHour & startMinute == endMinute)
+							JOptionPane.showMessageDialog(frame, "Write Subject name and time.", "정보 누락", JOptionPane.WARNING_MESSAGE); //과목-시간
+						else
+							JOptionPane.showMessageDialog(frame, "Write Subject name.", "정보 누락", JOptionPane.WARNING_MESSAGE); //과목이름 누락
+					}
+					else if(txtProf.getText().isEmpty()){
+						if(SelectDay == null){
+							if(startHour == endHour & startMinute == endMinute){
+								//if(txtSubject.getText().isEmpty())
+									//JOptionPane.showMessageDialog(frame, "과목 이름과 교수님 이름, 시간, 요일을 작성하세요.", "정보 누락", JOptionPane.WARNING_MESSAGE); //과목-교수-요일-시간
+								
+									JOptionPane.showMessageDialog(frame, "Write Prof name, Select Day of the week and Time.", "정보 누락", JOptionPane.WARNING_MESSAGE); //교수-요일-시간
+							}
+							else
+								JOptionPane.showMessageDialog(frame, "Write Prof name and Select Day of the week.", "정보 누락", JOptionPane.WARNING_MESSAGE);  //교수-요일
+						}
+						else if(startHour == endHour & startMinute == endMinute)
+							JOptionPane.showMessageDialog(frame, "Write Prof name and Time.", "정보 누락", JOptionPane.WARNING_MESSAGE); //교수-시간
+						else if(SelectDay == null)
+							JOptionPane.showMessageDialog(frame, "Write Prof name and Select Day of the week.", "정보 누락", JOptionPane.WARNING_MESSAGE);  //교수-요일
+						else
+							JOptionPane.showMessageDialog(frame, "Write Prof name.", "정보 누락", JOptionPane.WARNING_MESSAGE); //교수이름 누락					
+					}
+					else if(SelectDay == null){									
+						if(startHour == endHour & startMinute == endMinute)
+								JOptionPane.showMessageDialog(frame, "Select Day of the week and Time.", "정보 누락", JOptionPane.WARNING_MESSAGE);  //요일-시간
+						else
+							JOptionPane.showMessageDialog(frame, "Select Day of the week", "정보 누락", JOptionPane.WARNING_MESSAGE); //요일 누락
+					}
+					else if(startHour == endHour & startMinute == endMinute)
+						JOptionPane.showMessageDialog(frame, "Select Time.", "정보 누락", JOptionPane.WARNING_MESSAGE); //시작 시간, 끝나는 시간 동일
+					//else if(txtSubject.getText().isEmpty() & txtProf.getText().isEmpty() & startHour == endHour & startMinute == endMinute & SelectDay == null)
+						//JOptionPane.showMessageDialog(frame, "과목 이름과 교수님 이름, 시간, 요일을 작성하세요.", "정보 누락", JOptionPane.WARNING_MESSAGE); //과목-교수-요일-시간
+					
+					else{
+					//Subject subject1 = new Subject(txtName.getText(), 2017, 1);
+						SubjectElement addSubject = new SubjectElement(txtSubject.getText(), txtProf.getText(), SelectDay, startHour, startMinute,
+								endHour, endMinute, ycYear.getValue(), semester);    //subject 구조체(?)에 내용 저장
+					
+					//DB의 Subject벡터에 꼬리 달기
+					database.SubjectAdd(addSubject);
+					//SubjectManage의 화면 테이블에 내용 add
+					subjectmanage_parm.Subject_Table();	
+					subjectmanage_parm.setVisible(true);
+						thisSubjectAdd.dispose();
+					}
 				
 			}
 		});
