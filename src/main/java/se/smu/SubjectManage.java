@@ -86,7 +86,6 @@ public class SubjectManage extends JFrame {
 		btnAdd.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				//thisSubjectManage.setVisible(false);
 				SubjectAdd subjectadd1 = new SubjectAdd(thisSubjectManage);
 				subjectadd1.setVisible(true);
 			}

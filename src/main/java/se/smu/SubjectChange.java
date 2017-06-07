@@ -96,7 +96,7 @@ public class SubjectChange extends JFrame {
 		txtProf.setColumns(10);
 		
 		JComboBox cbStartHour = new JComboBox(database.Hour);
-		int originstartHour = selectedSubject.starthour; //셍각
+		int originstartHour = selectedSubject.starthour; 
 		if(originstartHour > 12)
 			originstartHour = originstartHour - 12;
 		String originstart = ""+originstartHour;
@@ -112,7 +112,7 @@ public class SubjectChange extends JFrame {
 		contentPane.add(cbStartMinute);
 		
 		JComboBox cbEndHour = new JComboBox(database.Hour);
-		int originendHour = selectedSubject.endhour;  //생각
+		int originendHour = selectedSubject.endhour;  
 		if(originendHour > 12)
 			originendHour = originendHour - 12;
 		String originend = ""+originendHour;

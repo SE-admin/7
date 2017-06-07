@@ -75,11 +75,7 @@ public class TodoAdd extends JFrame {
 		JLabel lblDeadline = new JLabel("Deadline");
 		lblDeadline.setBounds(30, 171, 79, 16);
 		contentPane.add(lblDeadline);
-/*		
-		JLabel lbCompleted = new JLabel("Compeleted");
-		lbCompleted.setBounds(331, 116, 96, 16);
-		contentPane.add(lbCompleted);
-*/				
+			
 		txtTodo = new JTextField();
 		txtTodo.setBounds(133, 45, 418, 24);
 		contentPane.add(txtTodo);
@@ -89,12 +85,7 @@ public class TodoAdd extends JFrame {
 		cbSubject = new JComboBox(DataBase.getSubjectName());
 		cbSubject.setBounds(133, 111, 200, 24);
 		contentPane.add(cbSubject);
-/*		
-		JCheckBox checkCompleted = new JCheckBox();
-		checkCompleted.setHorizontalAlignment(SwingConstants.LEFT);
-		checkCompleted.setBounds(417, 116, 128, 23);
-		contentPane.add(checkCompleted);
-*/		
+		
 		JLabel lblImportance = new JLabel("Importance");
 		lblImportance.setBounds(351, 111, 110, 18);
 		contentPane.add(lblImportance);
@@ -134,42 +125,7 @@ public class TodoAdd extends JFrame {
 		JCalendarDeadline.setBounds(351, 171, 325, 229);
 		contentPane.add(JCalendarDeadline);
 		
-/*		
-		JComboBox cbDueDateMinute = new JComboBox(DataBase.Minute);
-		cbDueDateMinute.setMaximumRowCount(12);
-		cbDueDateMinute.setBounds(523, 157, 52, 27);
-		contentPane.add(cbDueDateMinute);
-		
-		JComboBox cbDueDateHour = new JComboBox(DataBase.Hour);
-		cbDueDateHour.setMaximumRowCount(59);
-		cbDueDateHour.setBounds(438, 157, 52, 27);
-		contentPane.add(cbDueDateHour);
-		
-		JCalendar JCalendarDueDate = new JCalendar();
-		JCalendarDueDate.setWeekOfYearVisible(false);
-		JCalendarDueDate.setNullDateButtonText("");
-		JCalendarDueDate.setDecorationBordersVisible(true);
-		JCalendarDueDate.setBounds(375, 190, 325, 229);
-		contentPane.add(JCalendarDueDate);
-		
-		JButton btnAmPmDueDate = new JButton("AM");
-		btnAmPmDueDate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if((btnAmPmDueDate.getText()).equals("AM")){
-					btnAmPmDueDate.setText("PM");					//AM to PM button text 바꾸기 
-				}
-				else
-					btnAmPmDueDate.setText("AM");
-			}
-		});
-		btnAmPmDueDate.setBounds(393, 156, 45, 29);
-		contentPane.add(btnAmPmDueDate);
-		
-		JLabel lblNewLabel_1 = new JLabel("Due Date");
-		lblNewLabel_1.setBounds(331, 161, 61, 16);
-		contentPane.add(lblNewLabel_1);
-*/		
-		    
+
 //Add  
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
@@ -203,7 +159,6 @@ public class TodoAdd extends JFrame {
 			TodoElement.todoinsertDB();
 			DataBase.TodoAdd(TodoElement);
 			todomanage_parm.SelectUpdateTableMethod();
-			//todomanage_parm.UpdateTable();		    //update table
 			todomanage_parm.setVisible(true);
 			thisTodoAdd.dispose();
 			}
@@ -214,7 +169,7 @@ public class TodoAdd extends JFrame {
 		
 		
 	}
-	//Check Todo redundancy																		******************************************
+
 		public boolean CheckTodoRedundancy(){
 			int NumberofRows=DataBase.getTableModel().getRowCount();
 			boolean result=false;

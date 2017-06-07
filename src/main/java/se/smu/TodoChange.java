@@ -108,7 +108,6 @@ public class TodoChange extends JFrame {
 		txtTodo.setBounds(135, 20, 418, 24);
 		contentPane.add(txtTodo);
 		
-//TODO subject연동 
 		JComboBox cbSubject = new JComboBox(DataBase.getSubjectName());
 		cbSubject.setBounds(135, 59, 200, 24);
 		contentPane.add(cbSubject);
@@ -127,19 +126,19 @@ public class TodoChange extends JFrame {
 		contentPane.add(checkCompleted);
 		
 		JComboBox cbDeadlineHour = new JComboBox(DataBase.Hour);
-		cbDeadlineHour.setSelectedIndex(selectedTodoElement.Deadline.get(Calendar.HOUR)-1);							// Load hour indx접근이기떄문에 0부터..~> -1해준다.
+		cbDeadlineHour.setSelectedIndex(selectedTodoElement.Deadline.get(Calendar.HOUR)-1);						
 		cbDeadlineHour.setMaximumRowCount(12);
 		cbDeadlineHour.setBounds(194, 106, 59, 24);
 		contentPane.add(cbDeadlineHour);
 		
 		JComboBox cbDeadlineMinute = new JComboBox(DataBase.Minute);
-		cbDeadlineMinute.setSelectedIndex(selectedTodoElement.Deadline.get(Calendar.MINUTE));					  //
+		cbDeadlineMinute.setSelectedIndex(selectedTodoElement.Deadline.get(Calendar.MINUTE));					
 		cbDeadlineMinute.setMaximumRowCount(59);
 		cbDeadlineMinute.setBounds(258, 106, 59, 24);
 		contentPane.add(cbDeadlineMinute);
 
 		JCalendar JCalendarDueDate = new JCalendar();
-//** Calendar Default **///MIN,HOUR	
+
 		SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy.M.dd hh:mm a");	
 		Calendar cal1=Calendar.getInstance();
 		cal1.set(2002,10,11,11,11);														//Default
@@ -151,7 +150,7 @@ public class TodoChange extends JFrame {
 			}
 		else
 			JCalendarDueDate.setCalendar(selectedTodoElement.DueDate);			// load Calendar data
-//
+
 		JCalendarDueDate.setWeekOfYearVisible(false);
 		JCalendarDueDate.setNullDateButtonText("");
 		JCalendarDueDate.setDecorationBordersVisible(true);
@@ -172,9 +171,9 @@ public class TodoChange extends JFrame {
 		if(dateA.compareTo(dateB)==0){
 			Calendar c = Calendar.getInstance();
 			cbDueDateMinute.setSelectedIndex(c.get(Calendar.MINUTE));   }
-																							//
+																						
 		else
-			cbDueDateMinute.setSelectedIndex(selectedTodoElement.DueDate.get(Calendar.MINUTE));					//
+			cbDueDateMinute.setSelectedIndex(selectedTodoElement.DueDate.get(Calendar.MINUTE));					
 		cbDueDateMinute.setMaximumRowCount(12);
 		cbDueDateMinute.setBounds(258, 143, 59, 24);
 		contentPane.add(cbDueDateMinute);
@@ -186,11 +185,7 @@ public class TodoChange extends JFrame {
 		JCalendarDeadline.setDecorationBordersVisible(true);
 		JCalendarDeadline.setBounds(17, 183, 325, 229);
 		contentPane.add(JCalendarDeadline);
-		
-		
 
-		
-//TODO 
 		JButton btnChange = new JButton("Change");
 		btnChange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -213,7 +208,6 @@ public class TodoChange extends JFrame {
 				TodoAdd.AM_PM(CalendarDueDate, btnAmPmDueDate);
 				TodoAdd.AM_PM(CalendarDeadline, btnAmPmDeadline);
 			
-				
 				TodoElement TodoElement = new TodoElement(Todo, Subject, CalendarDeadline, CalendarDueDate, Completed, Importance);
 				TodoElement.todochangeDB(selectedRow);
 				DataBase.getSelectedTodoElement(selectedRow);

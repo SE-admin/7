@@ -33,11 +33,7 @@ public class TodoManage extends JFrame {
 	public JScrollPane scrollPane;	
 	private TodoElement TE = new TodoElement(null, null, null, null, rootPaneCheckingEnabled, rootPaneCheckingEnabled);
 	private DataBase DataBase;
-/* 
- * 	use UpdateTable() for initiating and updating table
- *  methods is specified down below the class
-*/
-	
+
 	public TodoManage(Intro introclass_parm) {
 		
 		DataBase = DataBase.getDataBase();										//Import DB to Manage To do 
@@ -132,11 +128,6 @@ public class TodoManage extends JFrame {
 		btnResetSort.setBounds(779, 50, 105, 45);
 		contentPane.add(btnResetSort);
 	
-/*
- ******HIDE AND SHOW COMPLETED TO DO
-***************구현
-**********************************~
-*/
 		JButton btnHideShowCompleted = new JButton();
 		btnHideShowCompleted.setText("Hide");
 		if(DataBase.Hide==false)
@@ -161,12 +152,8 @@ public class TodoManage extends JFrame {
 		btnHideShowCompleted.setBounds(779, 257, 105, 45);
 		contentPane.add(btnHideShowCompleted);
 					
-		thisTodoManage.SelectUpdateTableMethod(); 									///~~~~~~~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		//thisTodoManage.UpdateTable();													//create table
+		thisTodoManage.SelectUpdateTableMethod(); 								
 
-
-		
-		
 }
 //initiate & update table
 	public void UpdateTable(){ 
@@ -198,19 +185,12 @@ public class TodoManage extends JFrame {
 		table.getColumnModel().getColumn(4).setPreferredWidth(50);
 		table.getColumnModel().getColumn(5).setPreferredWidth(50);
 		table.setFillsViewportHeight(true);
-		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-		
-		centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );				//center the 'Completed' and 'Importance' column
-		table.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
-		table.getColumnModel().getColumn(5).setCellRenderer( centerRenderer );	
 
 //과목정렬, 마감기한, 실제 마감일 , 완료 여부 정렬 
 		scrollPane.setViewportView(table);
 		RowSorter sorter = new TableRowSorter(TableModel);
 		table.setRowSorter(sorter);									 // sort table
 		}
-//Data model for 'HIDE AND SHOW COMPLETED TO DO'
-	
 	public void UpdateTable_HideShowCompleted(){
 		TableModel = new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames){    //테이블 수정 금지
 	         public boolean isCellEditable(int row, int column){
@@ -233,7 +213,6 @@ public class TodoManage extends JFrame {
 		table.setAutoCreateRowSorter(true);										 // sort table
 	}
 		
-//Select which 'update table' method will be used according to the statement of Hide/Show button
 	public void SelectUpdateTableMethod(){
 		if(DataBase.Hide==false)
 			thisTodoManage.UpdateTable();
@@ -241,40 +220,6 @@ public class TodoManage extends JFrame {
 			UpdateTable_HideShowCompleted();
 		}
 
-//	public void Update_Table(){   
-//		table = new JTable();
-//		TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
-//		table.setModel(TableModel);		// set table model 
-//		table = new JTable(TableModel);
-//		for(int i=0;i<TableModel.getRowCount();i++)
-//		{
-//			TableModel.removeRow(0);
-//		}
-//		for(int i=0; i<=DataBase.inittodo.size();i++){
-//			TableModel.addRow(DataBase.inittodo.toArray());
-//			for(int j =0 ; j<6; j++){
-//				DataBase.inittodo.remove(0);}
-//			}
-//		
-//		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//		table.getColumnModel().getColumn(0).setPreferredWidth(150);
-//		table.getColumnModel().getColumn(1).setPreferredWidth(96);
-//		table.getColumnModel().getColumn(2).setPreferredWidth(157);
-//		table.getColumnModel().getColumn(3).setPreferredWidth(157);
-//		table.getColumnModel().getColumn(4).setPreferredWidth(50);
-//		table.getColumnModel().getColumn(5).setPreferredWidth(50);
-//		table.setFillsViewportHeight(true);
-//		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-//		
-//		centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );				//center the 'Completed' and 'Importance' column
-//		table.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
-//		table.getColumnModel().getColumn(5).setCellRenderer( centerRenderer );	
-//
-////과목정렬, 마감기한, 실제 마감일 , 완료 여부 정렬 
-//		scrollPane.setViewportView(table);
-//		RowSorter sorter = new TableRowSorter(TableModel);
-//		table.setRowSorter(sorter);									 // sort table
-//		}
 	}			
 
 		
