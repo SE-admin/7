@@ -159,31 +159,45 @@ public class SubjectChange extends JFrame {
 		 */
 		
 		JButton btnMon = new JButton("MON");
-		btnMon.setBounds(133, 226, 73, 45);
+		if(selectedSubject.selectday == "MON")
+			btnMon.setBackground(Color.CYAN);
+		btnMon.setBounds(133, 350, 65, 45);
 		contentPane.add(btnMon);
 		
 		JButton btnTue = new JButton("TUE");
-		btnTue.setBounds(215, 226, 73, 45);
+		if(selectedSubject.selectday == "TUE")
+			btnTue.setBackground(Color.CYAN);
+		btnTue.setBounds(215, 350, 65, 45);
 		contentPane.add(btnTue);
 		
 		JButton btnWed = new JButton("WED");
-		btnWed.setBounds(297, 226, 73, 45);
+		if(selectedSubject.selectday == "WED")
+			btnWed.setBackground(Color.CYAN);
+		btnWed.setBounds(294, 350, 65, 45);
 		contentPane.add(btnWed);
 		
 		JButton btnThu = new JButton("THU");
-		btnThu.setBounds(379, 226, 73, 45);
+		if(selectedSubject.selectday == "THU")
+			btnThu.setBackground(Color.CYAN);
+		btnThu.setBounds(374, 350, 65, 45);
 		contentPane.add(btnThu);
 		
 		JButton btnFri = new JButton("FRI");
-		btnFri.setBounds(461, 226, 73, 45);
+		if(selectedSubject.selectday == "FRI")
+			btnFri.setBackground(Color.CYAN);
+		btnFri.setBounds(453, 350, 65, 45);
 		contentPane.add(btnFri);
 		
 		JButton btnSat = new JButton("SAT");
-		btnSat.setBounds(543, 226, 73, 45);
+		if(selectedSubject.selectday == "SAT")
+			btnSat.setBackground(Color.CYAN);
+		btnSat.setBounds(532, 350, 65, 45);
 		contentPane.add(btnSat);
 		
 		JButton btnSun = new JButton("SUN");
-		btnSun.setBounds(625, 226, 73, 45);
+		if(selectedSubject.selectday == "SUN")
+			btnSun.setBackground(Color.CYAN);
+		btnSun.setBounds(609, 350, 65, 45);
 		contentPane.add(btnSun);
 		
 		//생각
