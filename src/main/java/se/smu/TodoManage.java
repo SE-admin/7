@@ -168,16 +168,16 @@ public class TodoManage extends JFrame {
 	            return false;
 	            }
 	      };
-		int cnt = TE.todoDBrow();
 		table = new JTable();
-		TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
+	//	TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
 		table.setModel(TableModel);		// set table model 
 		DataBase.setTableModel(TableModel);
-		table = new JTable(TableModel);
+	//	table = new JTable(TableModel);
+		int cnt = TE.todoDBrow();
 		if(cnt != 0){
 		for(int i=0; i<cnt;i++){
 			TableModel.addRow(DataBase.inittodo.toArray());
-			for(int j =0 ; j<6; j++){
+			for(int j =0 ; j<7; j++){
 				DataBase.inittodo.remove(0);
 				}
 			}
@@ -231,7 +231,7 @@ public class TodoManage extends JFrame {
 		if(DataBase.Hide==false)
 			thisTodoManage.UpdateTable();
 		else
-			thisTodoManage.UpdateTable_HideShowCompleted();
+			UpdateTable_HideShowCompleted();
 		}
 
 //	public void Update_Table(){   

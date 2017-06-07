@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 public class TodoElement {
 
 	//"To do", "Subject", "Deadline", "Due date", "Completed", "Importance"
@@ -26,7 +27,7 @@ public class TodoElement {
 	public Date DDead;
 	public Date DDue;
 	DataBase database = new DataBase();
-
+	
 	public TodoElement(String Todo, String Subject, Calendar Deadline, 
 			Calendar DueDate, boolean Completed, boolean Importance){
 		this.Todo=Todo;
@@ -72,7 +73,7 @@ public class TodoElement {
 	
 	public void todoinitDB(){
 		int j=0;
-		TodoElement a = null;
+		TodoElement a = new TodoElement(null, null, null, null, false, false);
 		Connection con = null;
 		Statement stmt = null;
 		String sql = "select * from Tododb limit " ;
@@ -224,17 +225,16 @@ public class TodoElement {
 		    }
 		   }
 
-	}
-//	public void subtododeleteDB(String subject){
-//		TodoElement TE = new TodoElement(null, null, null, null, false, false);
-//		System.out.print(subject);
+//	}
+//	public void subtododeleteDB(){
+//		System.out.print(SE.name);
 //		Connection con = null;
 //		Statement stmt = null;
 //		ResultSet rs = null;
 //		String sql = "delete from Tododb where rownum = ";
 //		String sql2 = "select * from subjectdb where Subject = ";
 //		try {
-//			sql2 += subject;
+//			sql2 += SE.name;
 //			rs = stmt.executeQuery(sql2);
 //			rs.next();
 //			int j = Integer.parseInt(rs.getString("rownum"));
@@ -244,8 +244,8 @@ public class TodoElement {
 //		      "jdbc:mariadb://211.253.25.2:3306/Turkey", "user", "1234");
 //		    stmt = (Statement) con.createStatement();
 //		    stmt.executeUpdate(sql);
-//		    System.out.print(TE.todoDBrow());
-//		    for(int i=j;i<=TE.todoDBrow();i++){
+//		    System.out.print(todoDBrow());
+//		    for(int i=j;i<=todoDBrow();i++){
 //		    	String sql1 = "update Tododb set rownum = ";
 //		    	sql1 += "'"+String.valueOf(i)+"'"+ " Where rownum = "+ "'"+String.valueOf(i+1)+"'";
 //		    	stmt.executeUpdate(sql1);
@@ -266,6 +266,6 @@ public class TodoElement {
 //		    }
 //		   }
 //
-//	}
+	}
 	
 }

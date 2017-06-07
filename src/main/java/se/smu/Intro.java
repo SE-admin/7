@@ -23,7 +23,7 @@ public class Intro extends JFrame {
 		SubjectElement SE = new SubjectElement(null, null, null, 0, null, 0, null, 0, null);
 		if(SE.DBrow() != 0){
 			SE.initDB();}
-		TodoElement TE = new TodoElement(null, null, null, null, rootPaneCheckingEnabled, rootPaneCheckingEnabled);
+		TodoElement TE = new TodoElement(null, null, null, null, false, false);
 		if(TE.todoDBrow() != 0){
 			TE.todoinitDB();
 		}

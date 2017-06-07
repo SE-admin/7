@@ -121,7 +121,7 @@ public class DataBase {
 //Todoelement 2차원 배열화 ~> datamodel에 사용을 위함 * Object [] [] 행값 넘겨줌 
 		
 		public String[][] MatrixTodoElement(){
-			String [][] TodoMatrix= new String [TodoElement.size()][6];   //배열 선언 후 iterator를 통한 순차접근~> maxtrix채운다.
+			String [][] TodoMatrix= new String [TodoElement.size()][7];   //배열 선언 후 iterator를 통한 순차접근~> maxtrix채운다.
 			Iterator<TodoElement> iterator=TodoElement.iterator();
 			for(int i=0; i<TodoElement.size();i++){
 				TodoElement element = TodoElement.elementAt(i);
@@ -131,8 +131,8 @@ public class DataBase {
 				this.inittodo.add(TodoMatrix[i][2]=Dead_sdf.format(element.Deadline.getTime()));						//Convert Date to String
 				
 				// 자훈오빠 코드 
-				//SimpleDateFormat Due_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a"); 
-				//this.inittodo.add(TodoMatrix[i][3]=Due_sdf.format(element.DueDate.getTime()));
+//				SimpleDateFormat Due_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a"); 
+//				this.inittodo.add(TodoMatrix[i][3]=Due_sdf.format(element.DueDate.getTime()));
 				
 //* Due고친부분 
 				SimpleDateFormat Due_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a");
@@ -141,7 +141,7 @@ public class DataBase {
 				cal1.set(2002,10,11,11,11);														//Default
 				String dateA=simpleDateFormat.format(cal1.getTime());
 				String dateB=simpleDateFormat.format(element.DueDate.getTime());
-				if(dateA.compareTo(dateB)==0) 											//Default value of DueDate will be shown " - " in table
+				if(dateA.compareTo(dateB)==0) 										//Default value of DueDate will be shown " - " in table
 					this.inittodo.add((TodoMatrix[i][3]="  -  "));	
 				else
 					this.inittodo.add(TodoMatrix[i][3]=Due_sdf.format(element.DueDate.getTime()));	
@@ -150,6 +150,7 @@ public class DataBase {
 				else this.inittodo.add(TodoMatrix[i][4]="X");
 				if (element.Importance== true) this.inittodo.add(TodoMatrix[i][5]="O") ;
 				else this.inittodo.add(TodoMatrix[i][5]="X");	
+				this.inittodo.add(TodoMatrix[i][6]=String.valueOf(i));
 			}
 			return null;	
 		}	
@@ -172,7 +173,7 @@ public class DataBase {
 */
 				public String[][] MatrixHideShowCompleted(){
 					int size=SizeofMatrix();
-					String [][] TodoMatrix= new String [size][6];   // fill the matrix using iterator
+					String [][] TodoMatrix= new String [size][7];   // fill the matrix using iterator
 					Iterator<TodoElement> iterator=TodoElement.iterator();
 					TodoElement element=new TodoElement(null, null, null, null, false, false);
 					int ShowIndex=0;								//Model Index of table model

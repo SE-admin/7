@@ -286,6 +286,7 @@ public class SubjectAdd extends JFrame {
 					
 					//DB의 Subject벡터에 꼬리 달기
 					database.SubjectAdd(addSubject);
+					addSubject.insertDB();
 					//SubjectManage의 화면 테이블에 내용 add
 					subjectmanage_parm.Subject_Table();	
 					subjectmanage_parm.setVisible(true);

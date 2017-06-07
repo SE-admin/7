@@ -15,7 +15,6 @@ public class SubjectElement {
 	public String semester;
 	DataBase database = new DataBase();
 	
-	
 	public SubjectElement(String name, String prof, String selectDay, int startHour, String startMinute, int endHour,
 			String endMinute, int year, String semester) { 
 		this.name = name; // this.name=>public class Subject�� name
@@ -191,15 +190,15 @@ public class SubjectElement {
 		String sql = "delete from subjectdb where rownum = ";
 		String sql2 = "select * from subjectdb where rownum = ";
 		try {
-			sql2 += (j+1);
+	//		sql2 += (j+1);
 		    sql += (j+1);
 		    Class.forName("org.mariadb.jdbc.Driver"); 
 		    con = DriverManager.getConnection(
 		      "jdbc:mariadb://211.253.25.2:3306/Turkey", "user", "1234");
 		    stmt = (Statement) con.createStatement();
-		    rs = stmt.executeQuery(sql2);
-		    rs.next();
-		    this.name = rs.getString("subject");
+	//	    rs = stmt.executeQuery(sql2);
+	//	    rs.next();
+	//	    this.name = rs.getString("subject");
 		    stmt.executeUpdate(sql);
 		    for(int i=(j+1);i<=DBrow();i++){
 		    	String sql1 = "update subjectdb set rownum = ";
