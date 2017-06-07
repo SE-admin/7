@@ -84,11 +84,7 @@ public class DataBase {
 			}
 			return SubjectName;
 		}
-		
 
-		
-	
-		
 //"To do", "Subject", "Deadline", "Due date", "Completed", "Importance"		
 		public void TodoAdd(TodoElement Element){
 			TodoElement.add(Element);
@@ -130,11 +126,6 @@ public class DataBase {
 				SimpleDateFormat Dead_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a"); //Date출력 형식 지정 * 'a' is Am/pm marker
 				this.inittodo.add(TodoMatrix[i][2]=Dead_sdf.format(element.Deadline.getTime()));						//Convert Date to String
 				
-				// 자훈오빠 코드 
-//				SimpleDateFormat Due_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a"); 
-//				this.inittodo.add(TodoMatrix[i][3]=Due_sdf.format(element.DueDate.getTime()));
-				
-//* Due고친부분 
 				SimpleDateFormat Due_sdf=new SimpleDateFormat("yyyy.M.dd hh:mm a");
 				SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy.M.dd hh:mm a");	
 				Calendar cal1=Calendar.getInstance();
@@ -144,19 +135,15 @@ public class DataBase {
 				if(dateA.compareTo(dateB)==0) 										//Default value of DueDate will be shown " - " in table
 					this.inittodo.add((TodoMatrix[i][3]="  -  "));	
 				else
-					this.inittodo.add(TodoMatrix[i][3]=Due_sdf.format(element.DueDate.getTime()));	
-//			
+					this.inittodo.add(TodoMatrix[i][3]=Due_sdf.format(element.DueDate.getTime()));		
 				if (element.Completed == true) this.inittodo.add(TodoMatrix[i][4]="O") ;
 				else this.inittodo.add(TodoMatrix[i][4]="X");
 				if (element.Importance== true) this.inittodo.add(TodoMatrix[i][5]="O") ;
 				else this.inittodo.add(TodoMatrix[i][5]="X");	
-		//		this.inittodo.add(TodoMatrix[i][6]=String.valueOf(i));
 			}
 			return null;	
 		}	
-/*
-* calculate size of matrix used in method below //count not completed item in Vector to allocate matrix
-*/
+
 			public int SizeofMatrix(){
 				int size=0;
 				Iterator<TodoElement> iterator=TodoElement.iterator();
@@ -168,20 +155,18 @@ public class DataBase {
 				}
 				return size;
 			}		
-/* 
-* Table model for 'hide or show completed To do'
-*/
+
 				public String[][] MatrixHideShowCompleted(){
 					int size=SizeofMatrix();
 					String [][] TodoMatrix= new String [size][6];   // fill the matrix using iterator
 					Iterator<TodoElement> iterator=TodoElement.iterator();
 					TodoElement element=new TodoElement(null, null, null, null, false, false);
 					int ShowIndex=0;								//Model Index of table model
-					HideHashMap.clear();  					//clear hashmap for updating mapping index ~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+					HideHashMap.clear();  					//clear hashmap for updating mapping index 
 					for(int i=0; iterator.hasNext();i++){			// i is vector index
 						element=iterator.next();
 						if(element.Completed==false){									// remove completed item from data model		
-						HideHashMap.put(ShowIndex,i );							//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+						HideHashMap.put(ShowIndex,i );							
 								
 						TodoMatrix[ShowIndex][0]=element.Todo;
 						TodoMatrix[ShowIndex][1]=element.Subject;
@@ -210,7 +195,7 @@ public class DataBase {
 						}	
 				
 		
-//need to check redundancy																								**********************************
+//need to check redundancy																					
 	public void setTableModel(DefaultTableModel tablemodel){									
 		TableModel=tablemodel;
 		}
