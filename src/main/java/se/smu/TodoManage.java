@@ -108,7 +108,7 @@ public class TodoManage extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(779, 250, 105, 45);
+		btnBack.setBounds(779, 314, 105, 45);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				introclass.setVisible(true);
@@ -138,6 +138,7 @@ public class TodoManage extends JFrame {
 **********************************~
 */
 		JButton btnHideShowCompleted = new JButton();
+		btnHideShowCompleted.setText("Hide");
 		if(DataBase.Hide==false)
 			btnHideShowCompleted.setText("Hide");
 		else
@@ -157,7 +158,7 @@ public class TodoManage extends JFrame {
 				}
 							
 				});
-		btnHideShowCompleted.setBounds(826, 274, 105, 29);
+		btnHideShowCompleted.setBounds(779, 257, 105, 45);
 		contentPane.add(btnHideShowCompleted);
 					
 		thisTodoManage.SelectUpdateTableMethod(); 									///~~~~~~~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
