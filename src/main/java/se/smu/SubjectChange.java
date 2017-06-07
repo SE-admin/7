@@ -272,7 +272,7 @@ public class SubjectChange extends JFrame {
 						SelectDay = btnSun.getText();
 					
 					if(startHour == selectedSubject.starthour & endHour == selectedSubject.endhour & startMinute == selectedSubject.startminute & endMinute == selectedSubject.endminute & semester == selectedSubject.semester & SelectDay == selectedSubject.selectday)
-						JOptionPane.showMessageDialog(frame, "Change data", "정보 누락", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(frame, "Change data", "정보 누락", JOptionPane.WARNING_MESSAGE); //변경 내용이 없는경우 오류
 					
 					SubjectElement addSubject = new SubjectElement(txtSubject.getText(), txtProf.getText(), SelectDay, startHour, startMinute,
 							endHour, endMinute, ycYear.getValue(), semester);    //subject에 내용 저장
