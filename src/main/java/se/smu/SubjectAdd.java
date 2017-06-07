@@ -205,17 +205,12 @@ public class SubjectAdd extends JFrame {
 				int endHour = Integer.parseInt((String) cbEndHour.getSelectedItem());
 				String startMinute = (String) cbStartMinute.getSelectedItem();
 				String endMinute = (String) cbEndMinute.getSelectedItem();
-				String semester;
+				String semester = (String) cbSemester.getSelectedItem();;
 				
 				if (cbStartAm.getSelectedItem() == "PM")
 					startHour = startHour + 12;
 				if (cbEndAm.getSelectedItem() == "PM")
 					endHour = endHour + 12;
-				if (cbSemester.getSelectedItem() == "1")
-					semester = "1";
-				else
-					semester = "2";
-				
 				
 				String SelectDay = null;
 				if (btnMon.getBackground() == Color.CYAN)
