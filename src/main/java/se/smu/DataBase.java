@@ -173,7 +173,7 @@ public class DataBase {
 */
 				public String[][] MatrixHideShowCompleted(){
 					int size=SizeofMatrix();
-					String [][] TodoMatrix= new String [size][7];   // fill the matrix using iterator
+					String [][] TodoMatrix= new String [size][6];   // fill the matrix using iterator
 					Iterator<TodoElement> iterator=TodoElement.iterator();
 					TodoElement element=new TodoElement(null, null, null, null, false, false);
 					int ShowIndex=0;								//Model Index of table model
