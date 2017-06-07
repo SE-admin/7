@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -26,6 +27,8 @@ public class SubjectChange extends JFrame {
 	private JPanel contentPane;
 	private SubjectManage subjectmanageclass;
 	private SubjectChange thisSubjectChange = this;
+	private Frame frame = this;
+	
 	
 	public SubjectElement SubjectElement;
 	
@@ -267,6 +270,9 @@ public class SubjectChange extends JFrame {
 						SelectDay = btnSat.getText();
 					else if (btnSun.getBackground() == Color.CYAN)
 						SelectDay = btnSun.getText();
+					
+					if(startHour == selectedSubject.starthour & endHour == selectedSubject.endhour & startMinute == selectedSubject.startminute & endMinute == selectedSubject.endminute & semester == selectedSubject.semester & SelectDay == selectedSubject.selectday)
+						JOptionPane.showMessageDialog(frame, "Change data", "정보 누락", JOptionPane.WARNING_MESSAGE);
 					
 					SubjectElement addSubject = new SubjectElement(txtSubject.getText(), txtProf.getText(), SelectDay, startHour, startMinute,
 							endHour, endMinute, ycYear.getValue(), semester);    //subject에 내용 저장
