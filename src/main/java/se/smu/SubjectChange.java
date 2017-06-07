@@ -161,60 +161,44 @@ public class SubjectChange extends JFrame {
 		JButton btnMon = new JButton("MON");
 		if(selectedSubject.selectday == "MON")
 			btnMon.setBackground(Color.CYAN);
-		btnMon.setBounds(133, 350, 65, 45);
+		btnMon.setBounds(133, 226, 73, 45);
 		contentPane.add(btnMon);
 		
 		JButton btnTue = new JButton("TUE");
 		if(selectedSubject.selectday == "TUE")
 			btnTue.setBackground(Color.CYAN);
-		btnTue.setBounds(215, 350, 65, 45);
+		btnTue.setBounds(215, 226, 73, 45);
 		contentPane.add(btnTue);
 		
 		JButton btnWed = new JButton("WED");
 		if(selectedSubject.selectday == "WED")
 			btnWed.setBackground(Color.CYAN);
-		btnWed.setBounds(294, 350, 65, 45);
+		btnWed.setBounds(297, 226, 73, 45);
 		contentPane.add(btnWed);
 		
 		JButton btnThu = new JButton("THU");
 		if(selectedSubject.selectday == "THU")
 			btnThu.setBackground(Color.CYAN);
-		btnThu.setBounds(374, 350, 65, 45);
+		btnThu.setBounds(379, 226, 73, 45);
 		contentPane.add(btnThu);
 		
 		JButton btnFri = new JButton("FRI");
 		if(selectedSubject.selectday == "FRI")
 			btnFri.setBackground(Color.CYAN);
-		btnFri.setBounds(453, 350, 65, 45);
+		btnFri.setBounds(461, 226, 73, 45);
 		contentPane.add(btnFri);
 		
 		JButton btnSat = new JButton("SAT");
 		if(selectedSubject.selectday == "SAT")
 			btnSat.setBackground(Color.CYAN);
-		btnSat.setBounds(532, 350, 65, 45);
+		btnSat.setBounds(543, 226, 73, 45);
 		contentPane.add(btnSat);
 		
 		JButton btnSun = new JButton("SUN");
 		if(selectedSubject.selectday == "SUN")
 			btnSun.setBackground(Color.CYAN);
-		btnSun.setBounds(609, 350, 65, 45);
-		contentPane.add(btnSun);
-		
-		//생각
-		if(selectedSubject.selectday == "Mon")
-			btnMon.setBackground(Color.CYAN);
-		else if (selectedSubject.selectday == "Tue")
-			btnTue.setBackground(Color.CYAN);
-		else if (selectedSubject.selectday == "Wed")
-			btnWed.setBackground(Color.CYAN);
-		else if (selectedSubject.selectday == "Thu")
-			btnThu.setBackground(Color.CYAN);
-		else if (selectedSubject.selectday == "Fri")
-			btnFri.setBackground(Color.CYAN);
-		else if (selectedSubject.selectday == "Sat")
-			btnSat.setBackground(Color.CYAN);
-		else if (selectedSubject.selectday == "Sun")
-			btnSun.setBackground(Color.CYAN);
+		btnSun.setBounds(625, 226, 73, 45);
+		contentPane.add(btnSun);		
 		
 		 class SelectDay extends MouseAdapter {
 			 public void mouseClicked(MouseEvent e){
