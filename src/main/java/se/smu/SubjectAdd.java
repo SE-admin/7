@@ -259,9 +259,6 @@ public class SubjectAdd extends JFrame {
 					else if(txtProf.getText().isEmpty()){
 						if(SelectDay == null){
 							if(startHour == endHour & startMinute == endMinute){
-								//if(txtSubject.getText().isEmpty())
-									//JOptionPane.showMessageDialog(frame, "과목 이름과 교수님 이름, 시간, 요일을 작성하세요.", "정보 누락", JOptionPane.WARNING_MESSAGE); //과목-교수-요일-시간
-								
 									JOptionPane.showMessageDialog(frame, "Write Prof name, Select Day of the week and Time.", "정보 누락", JOptionPane.WARNING_MESSAGE); //교수-요일-시간
 							}
 							else
@@ -282,11 +279,8 @@ public class SubjectAdd extends JFrame {
 					}
 					else if(startHour == endHour & startMinute == endMinute)
 						JOptionPane.showMessageDialog(frame, "Select Time.", "정보 누락", JOptionPane.WARNING_MESSAGE); //시작 시간, 끝나는 시간 동일
-					//else if(txtSubject.getText().isEmpty() & txtProf.getText().isEmpty() & startHour == endHour & startMinute == endMinute & SelectDay == null)
-						//JOptionPane.showMessageDialog(frame, "과목 이름과 교수님 이름, 시간, 요일을 작성하세요.", "정보 누락", JOptionPane.WARNING_MESSAGE); //과목-교수-요일-시간
 					
 					else{
-					//Subject subject1 = new Subject(txtName.getText(), 2017, 1);
 						SubjectElement addSubject = new SubjectElement(txtSubject.getText(), txtProf.getText(), SelectDay, startHour, startMinute,
 								endHour, endMinute, ycYear.getValue(), semester);    //subject 구조체(?)에 내용 저장
 					
