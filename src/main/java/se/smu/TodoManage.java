@@ -168,11 +168,10 @@ public class TodoManage extends JFrame {
 	            return false;
 	            }
 	      };
+	      
 		table = new JTable();
-	//	TableModel=new DefaultTableModel(DataBase.MatrixTodoElement(),DataBase.TodoColumnNames);
 		table.setModel(TableModel);		// set table model 
 		DataBase.setTableModel(TableModel);
-	//	table = new JTable(TableModel);
 		int cnt = TE.todoDBrow();
 		if(cnt != 0){
 		for(int i=0; i<cnt;i++){

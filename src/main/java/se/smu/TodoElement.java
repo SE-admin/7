@@ -193,6 +193,7 @@ public class TodoElement {
 		   }
 	}
 	
+	
 	public void tododeleteDB(int j){
 		Connection con = null;
 		Statement stmt = null;

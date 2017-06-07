@@ -92,6 +92,7 @@ public class TodoChange extends JFrame {
 		btnAmPmDeadline.setBounds(132, 106, 59, 25);
 		contentPane.add(btnAmPmDeadline);
 		
+		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -218,7 +219,6 @@ public class TodoChange extends JFrame {
 				DataBase.getSelectedTodoElement(selectedRow);
 				DataBase.TodoChange(TodoElement, selectedRow);
 				todomanage_parm.SelectUpdateTableMethod();
-				//todomanage_parm.UpdateTable();
 				todomanage_parm.setVisible(true);
 				thisTodoChange.dispose();
 			}

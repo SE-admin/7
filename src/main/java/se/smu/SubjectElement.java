@@ -59,6 +59,7 @@ public class SubjectElement {
 		return row;
 }
 	
+	
 	public void initDB(){
 		int j=0;
 		SubjectElement a = null ;

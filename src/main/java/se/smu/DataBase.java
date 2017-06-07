@@ -121,7 +121,7 @@ public class DataBase {
 //Todoelement 2차원 배열화 ~> datamodel에 사용을 위함 * Object [] [] 행값 넘겨줌 
 		
 		public String[][] MatrixTodoElement(){
-			String [][] TodoMatrix= new String [TodoElement.size()][7];   //배열 선언 후 iterator를 통한 순차접근~> maxtrix채운다.
+			String [][] TodoMatrix= new String [TodoElement.size()][6];   //배열 선언 후 iterator를 통한 순차접근~> maxtrix채운다.
 			Iterator<TodoElement> iterator=TodoElement.iterator();
 			for(int i=0; i<TodoElement.size();i++){
 				TodoElement element = TodoElement.elementAt(i);
@@ -150,7 +150,7 @@ public class DataBase {
 				else this.inittodo.add(TodoMatrix[i][4]="X");
 				if (element.Importance== true) this.inittodo.add(TodoMatrix[i][5]="O") ;
 				else this.inittodo.add(TodoMatrix[i][5]="X");	
-				this.inittodo.add(TodoMatrix[i][6]=String.valueOf(i));
+		//		this.inittodo.add(TodoMatrix[i][6]=String.valueOf(i));
 			}
 			return null;	
 		}	
@@ -208,6 +208,7 @@ public class DataBase {
 							}
 						return TodoMatrix;	
 						}	
+				
 		
 //need to check redundancy																								**********************************
 	public void setTableModel(DefaultTableModel tablemodel){									

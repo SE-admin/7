@@ -44,7 +44,7 @@ public class SubjectManage extends JFrame {
 			public boolean isCellEditable(int row, int column){
 				return false;
 				}
-		};;
+		};
 		
 		table = new JTable(TableModel);
 		if(cnt != 0){System.out.println(database.initsubject.size());
