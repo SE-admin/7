@@ -3,6 +3,7 @@ package se.smu;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -92,26 +93,54 @@ public class SubjectChange extends JFrame {
 		txtProf.setColumns(10);
 		
 		JComboBox cbStartHour = new JComboBox(database.Hour);
+		int originstartHour = selectedSubject.starthour; //셍각
+		if(originstartHour > 12)
+			originstartHour = originstartHour - 12;
+		String originstart = ""+originstartHour;
+		//cbStartHour.setSelectedItem(originstart);
+		cbStartHour.setSelectedIndex(originstartHour-1);
 		cbStartHour.setBounds(437, 45, 49, 24);
 		contentPane.add(cbStartHour);
 		
 		JComboBox cbStartMinute = new JComboBox(database.Minute);
+		int startMinuteint = Integer.parseInt((String) selectedSubject.startminute);
+		cbStartMinute.setSelectedIndex(startMinuteint);
 		cbStartMinute.setBounds(495, 45, 49, 24);
 		contentPane.add(cbStartMinute);
 		
 		JComboBox cbEndHour = new JComboBox(database.Hour);
+		int originendHour = selectedSubject.endhour;  //생각
+		if(originendHour > 12)
+			originendHour = originendHour - 12;
+		String originend = ""+originendHour;
+		//cbEndHour.setSelectedItem(originend);
+		cbEndHour.setSelectedIndex(originendHour-1);
 		cbEndHour.setBounds(437, 105, 49, 24);
 		contentPane.add(cbEndHour);
 		
 		JComboBox cbEndMinute = new JComboBox(database.Minute);
+		int endMinuteint = Integer.parseInt((String) selectedSubject.endminute);
+		cbEndMinute.setSelectedIndex(endMinuteint);
 		cbEndMinute.setBounds(495, 105, 49, 24);
 		contentPane.add(cbEndMinute);
 		
 		JComboBox cbStartAm = new JComboBox(database.Am);
+		String originstartAm = null;
+		if(selectedSubject.starthour < 12)
+			originstartAm = new String("AM");
+		else 
+			originstartAm = new String("PM");
+		cbStartAm.setSelectedItem(originstartAm);
 		cbStartAm.setBounds(374, 45, 51, 24);
 		contentPane.add(cbStartAm);
 		
 		JComboBox cbEndAm = new JComboBox(database.Am);
+		String originendAm = null;
+		if(selectedSubject.endhour < 12)
+			originendAm = new String("AM");
+		else 
+			originendAm = new String("PM");
+		cbEndAm.setSelectedItem(originendAm);
 		cbEndAm.setBounds(374, 105, 51, 24);
 		contentPane.add(cbEndAm);
 		
@@ -120,6 +149,8 @@ public class SubjectChange extends JFrame {
 		contentPane.add(ycYear);
 		
 		JComboBox cbSemester = new JComboBox(database.Semester);
+		int Semesterint = Integer.parseInt((String) selectedSubject.semester);
+		cbSemester.setSelectedIndex(Semesterint-1);
 		cbSemester.setBounds(287, 169, 42, 24);
 		contentPane.add(cbSemester);
 		
@@ -216,17 +247,12 @@ public class SubjectChange extends JFrame {
 					int endHour = Integer.parseInt((String) cbEndHour.getSelectedItem());
 					String startMinute = (String) cbStartMinute.getSelectedItem();
 					String endMinute = (String) cbEndMinute.getSelectedItem();
-					String semester;
+					String semester = (String) cbSemester.getSelectedItem();
 					
 					if (cbStartAm.getSelectedItem() == "PM")
 						startHour = startHour + 12;
 					if (cbEndAm.getSelectedItem() == "PM")
-						endHour = endHour + 12;
-					if (cbSemester.getSelectedItem() == "1")
-						semester = "1";
-					else
-						semester = "2";
-					
+						endHour = endHour + 12;	
 					
 					String SelectDay = null;
 					if (btnMon.getBackground() == Color.CYAN)
